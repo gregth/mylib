@@ -5,7 +5,7 @@
   if ( !empty( $_POST ) ) 
   {
     //inludes
-    include 'database_connect.php';
+    include 'connect.php';
     include 'db_functions.php';
     include 'validation_functions.php';
     $res = get_data_errors($_POST) //get data errors returns a table with all errors
