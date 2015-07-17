@@ -16,5 +16,4 @@
     require 'views/register_form.php';
   }
   require 'views/footer.php';
-
 ?>
