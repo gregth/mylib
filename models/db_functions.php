@@ -39,7 +39,7 @@
     //function for user authentication ; returns false on failure and userid on success
     function authenticate_user($data)
     {
-        $username = $data['username'];
+        $email = $data['email'];
         $password = $data['password'];
         //getting the salt
         $res = mysql_query(
@@ -49,7 +49,7 @@
             FROM
                 users
             WHERE
-                username = '$username'
+                email = '$email'
             LIMIT
                 1
             ;"
@@ -68,7 +68,7 @@
                 FROM
                     users
                 WHERE
-                    username = $username AND password = $password
+                    email = $email AND password = $password
                 ;"
                 );
             if(mysql_num_rows($res)==1)
