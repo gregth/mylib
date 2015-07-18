@@ -1,16 +1,15 @@
-//user funtions
-// may have syntax errors chekicng to do
 <?php
+    //user functions
     include 'connect.php';
 
     //inserts user info into the database
-    register_user($data)
+    function  register_user($data)
     {
-        $username = $_POST['username'];
-        $first_name = $_POST['first_name'];
-        $last_name = $POST['last_name'];
-        $email = $POST['email'];
-        $hash = hash_fun($_POST['password']); //hash with salt at the end
+        $username = $data['username'];
+        $first_name = $data['first_name'];
+        $last_name = $data['last_name'];
+        $email = $data['email'];
+        $hash = hash_fun($data['password']); //hash with salt at the end
         list($passhash,$salt) = explode("^",$hash);
         $success = mysql_query(
             "
@@ -29,7 +28,7 @@
     };
 
     //function used for hashing passwords
-    hash_fun($pass)
+    function hash_fun($pass)
     {
         $salt = md5(time());
         $pass .=$salt ;
@@ -38,10 +37,10 @@
     };
 
     //function for user authentication ; returns false on failure and userid on success
-    authenticate_user($data)
+    function authenticate_user($data)
     {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+        $username = $data['username'];
+        $password = $data['password'];
         //getting the salt
         $res = mysql_query(
             "
