@@ -64,7 +64,7 @@
             $res = mysql_query(
                 "
                 SELECT
-                    userid
+                    uid
                 FROM
                     users
                 WHERE
@@ -74,7 +74,7 @@
             if(mysql_num_rows($res)==1)
             {
                 $user = mysql_fetch_array($res);
-                return $user['userid'];
+                return $user['uid'];
             }
             else
             {
