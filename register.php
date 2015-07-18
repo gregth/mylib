@@ -1,9 +1,11 @@
 <?php
-    if ( isset( $_SESSION ) ) {
+    session_start();
+    //If user has logged in, redirect to index.php
+    if ( isset( $_SESSION[ 'userid' ] ) ) {
         header( 'Location: index.php'  );
     }
-    require 'views/header.php';
-    echo 'LOL';
+
+    //User has not logged in, dhow register form
     if ( !empty( $_POST ) ) {
         include 'models/connect.php';
         include 'models/db_functions.php';
@@ -18,26 +20,27 @@
             $success = register_user($_POST);
             if ($success)
             {
-                $_SESSION[ 'username' ] = $username;
                 $_SESSION[ 'userid' ] = mysql_insert_id();
-                header("location : index.php ");
-                die();
+                header("Location: index.php");
             }
             else
             {
-                $errors = 'internal database error try again'; // if sql fails we get this error
+                $errors = 'Προέκυψε σοβαρό σφάλμα, παρακαλούμε προσπαθήστε αργότερα.';
             }
         }
         else
         {
             //Include view that parses errors and form view
-            var_dump( $errors );
+            require 'views/header.php';
             require 'views/form_errors.php';
             require 'views/register_form.php';
+            require 'views/footer.php';
         }
     }
     else {
+            require 'views/header.php';
             require 'views/register_form.php';
+            require 'views/footer.php';
     }
-    require 'views/footer.php';
+
 ?>

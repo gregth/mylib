@@ -68,10 +68,14 @@
                 FROM
                     users
                 WHERE
-                    email = $email AND password = $password
+                    email = '$email' AND password = '$password'
                 ;"
                 );
-            if(mysql_num_rows($res)==1)
+            var_dump( $email );
+            if ( $res == false ) {
+                return false;
+            }
+            else if(mysql_num_rows($res)==1)
             {
                 $user = mysql_fetch_array($res);
                 return $user['uid'];

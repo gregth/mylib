@@ -1,5 +1,6 @@
 <?php
-    if ( isset( $_SESSION ) ) {
+    session_start();
+    if ( isset( $_SESSION[ 'userid' ] ) ) {
         //User has logged in, Redirect to index.php
         header( 'Location: index.php' );
     }
@@ -11,18 +12,18 @@
             require 'views/footer.php';
         }
         else {
-            require( 'models/db_functions' );
+            require( 'models/db_functions.php' );
             //Authenticate user
             $value = authenticate_user( $_POST );
             if ( $value === false ) {
                 require 'views/header.php';
-                require 'views/login_error.php';
+                require 'views/login_errors.php';
                 require 'views/login_form.php';
                 require 'views/footer.php';
             }
             else {
                 session_start();
-                $_SESSION[ 'uid' ] = $value;
+                $_SESSION[ 'userid' ] = $value;
                 header( "Location: profile.php?$value" );
             }
         }
