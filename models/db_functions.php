@@ -19,7 +19,7 @@
             SET
                 username = '$username',
                 password = '$passhash',
-                salt = '$salt'
+                salt = '$salt',
                 first_name = '$first_name',
                 last_name = '$last_name',
                 email = '$email'
