@@ -19,8 +19,8 @@
                 username = '$username',
                 password = '$passhash',
                 salt = '$salt',
-                first_name = '$first_name',
-                last_name = '$last_name',
+                firstname = '$first_name',
+                lastname = '$last_name',
                 email = '$email'
             ;"
         );

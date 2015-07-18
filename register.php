@@ -1,4 +1,7 @@
 <?php
+    if ( isset( $_SESSION ) ) {
+        header( 'Location: index.php'  );
+    }
     require 'views/header.php';
     echo 'LOL';
     if ( !empty( $_POST ) ) {
