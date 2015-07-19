@@ -24,7 +24,7 @@
             else {
                 session_start();
                 $_SESSION[ 'userid' ] = $value;
-                header( "Location: profile.php?$value" );
+                header( "Location: myprofile.php" );
             }
         }
     }

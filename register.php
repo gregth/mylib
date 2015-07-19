@@ -17,10 +17,10 @@
         if (empty($errors))
         {
             //insert user info to database
-            $success = register_user($_POST);
-            if ($success)
+            $result = register_user($_POST);
+            if ( $result !== false )
             {
-                $_SESSION[ 'userid' ] = mysql_insert_id();
+                $_SESSION[ 'userid' ] = $result;
                 header("Location: index.php");
             }
             else

@@ -2,9 +2,10 @@
     //user functions
     include 'connect.php';
 
-    //inserts user info into the database
+    //Retur fail if it fails registering the user, otherwise returns the user id
     function  register_user($data)
     {
+        global $db;
         $username = $data['username'];
         $first_name = $data['first_name'];
         $last_name = $data['last_name'];
@@ -12,11 +13,15 @@
         $hash = hash_fun($data['password']); //hash with salt at the end
         list($passhash,$salt) = explode("^",$hash);
         $stmt = mysqli_prepare($db,
-            "INSERT INTO users SET username = ? , password = ? , salt = ? , first_name = ? , last_name = ? , email = ? ");
+            "INSERT INTO users SET username = ? , password = ? , salt = ? , firstname = ? , lastname = ? , email = ? ");
         mysqli_stmt_bind_param($stmt,"ssssss",$username,$passhash,$salt,$first_name,$last_name,$email);
         mysqli_stmt_execute($stmt);
-        $success = mysqli_affeted_rows($db);
-        return $success;
+        if ( mysqli_affected_rows($db) != 1 ) {
+            return false;
+        }
+        else {
+            return mysqli_insert_id( $db );
+        }
     };
 
     //function used for hashing passwords
@@ -31,6 +36,7 @@
     //function for user authentication ; returns false on failure and userid on success
     function authenticate_user($data)
     {
+        global $db;
         $email = $data['email'];
         $password = $data['password'];
         //getting the salt
@@ -45,11 +51,11 @@
   //          $tmp = mysql_fetch_array($res);
   //        $salt = $tmp['salt'];
     //test
-            mysqli_stmt_fetch($stmt); 
+            mysqli_stmt_fetch($stmt);
             $password = hash('sha256',"$password"."$salt");
             //adding salt to given pass hashing and checking if the resulting hash is the same as the original
             mysqli_stmt_close($stmt);
-            $stmt = mysql_query($db,
+            $stmt = mysqli_prepare($db,
                 "SELECT uid FROM users WHERE email = ? AND password = ?");
             mysqli_stmt_bind_param($stmt,"ss",$email,$password);
             mysqli_stmt_execute($stmt);
@@ -57,7 +63,7 @@
             mysqli_stmt_bind_result($stmt,$user);
             if(mysqli_stmt_num_rows($stmt))
             {
-                mysqli_fetch_($stmt);
+                mysqli_stmt_fetch($stmt);
                 mysqli_stmt_close($stmt);
                 return $user;
             }
