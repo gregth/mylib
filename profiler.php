@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require 'models/db_functions.php';
     // if note logged in , redirect to login page
     if ( !isset( $_SESSION[ 'userid' ] ) ) {

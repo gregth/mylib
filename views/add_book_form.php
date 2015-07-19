@@ -11,7 +11,7 @@
     <?php
         }
     ?>
-    <input type="hidden" value="<?php echo $num ?>" name="authors_num" />
+    <input type="hidden" value="<?php echo $num ?>" name="authorsnum" />
     <?php
         $num = getGenresNum( $_GET );
         for ( $i = 0; $i < $num; $i++ ) {
@@ -20,7 +20,7 @@
     <?php
         }
     ?>
-    <input type="text" name="title" id="ISBN" placeholder="ISBN" />
-    <input type="submit" value="Καταχώρυση Βιβλίου" />
-    <input type="hidden" value="<?php echo $num ?>" name="genres_num" />
+    <input type="text" name="isbn" id="isbn" placeholder="ISBN" />
+    <input type="submit" value="Καταχώριση Βιβλίου" />
+    <input type="hidden" value="<?php echo $num ?>" name="genresnum" />
 </form>

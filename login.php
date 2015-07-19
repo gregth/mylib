@@ -1,5 +1,4 @@
 <?php
-    session_start();
     if ( isset( $_SESSION[ 'userid' ] ) ) {
         //User has logged in, Redirect to index.php
         header( 'Location: index.php' );

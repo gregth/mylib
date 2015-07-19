@@ -30,7 +30,7 @@
         return str_word_count( $string ) >= 10;
     }
 
-    function validateTitle( $sting ) {
+    function validateTitle( $string ) {
         return !empty( $string );
     }
 
@@ -38,8 +38,13 @@
         return str_word_count( $string ) >= 2;
     }
 
-    //Returns true if book data are valid, otherwide a map with error messages
-    function bookDataErros( $data ) {
+    function validateGenre( $string ) {
+        return strlen( $string ) >= 2;
+    }
+
+    //Returns false if book data are valid, otherwide a map with error messages
+    //TODO check for cocver image validity
+    function bookDataErrors( $data ) {
         $errors = [];
         $isbn = $data[ 'isbn' ];
         $title = $data[ 'title' ];
@@ -48,14 +53,37 @@
             $errors[] = "Το ISBN αποτελείται από 13 ψηφία χωρίς παύλες.";
         }
         if ( !validateDescription( $description ) ) {
-            $errors = "Η επίσημη περίληψη ενός βιβλίου αποτελείται τουλάχιστον από 10 λέξεις.";
+            $errors[] = "Η επίσημη περίληψη ενός βιβλίου αποτελείται τουλάχιστον από 10 λέξεις.";
         }
         if ( !validateTitle( $title ) ) {
-            $errors = "Ο τίτλος ενός βιβλίου δεν επιτρέπεται να είναι κενός";
+            $errors[] = "Ο τίτλος ενός βιβλίου δεν επιτρέπεται να είναι κενός";
         }
 
+        //Check if all author fields have content
+        $authorsNum = $data[ 'authorsnum' ];
+        for ( $i = 0; $i < $authorsNum; $i++ ) {
+            if ( !validateAuthor( $data[ 'author' . $i ] ) ) {
+                $errors[] = "Συμπληρώστε τα ονόματα όλων των συγγραφέων";
+                break;
+            }
+        }
 
+        //Check if all genres fiels have content
+        $genresNum = $data[ 'genresnum' ];
+        for ( $i = 0; $i < $genresNum; $i++ ) {
+            if ( !validateGenre( $data[ 'genre' . $i ] )  ) {
+                $errors[] = "Συμπληρώστε τα είδη στα οποία ανήκει το βιβλίο";
+                break;
+            }
+        }
+        if ( empty( $errors ) ) {
+            return false;
+        }
+        else {
+            return $errors;
+        }
     }
+
 
     function addBook( $data ) {
         global $db;
