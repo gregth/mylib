@@ -43,7 +43,8 @@
         if (mysqli_stmt_num_rows($stmt))
         {
   //          $tmp = mysql_fetch_array($res);
-    //        $salt = $tmp['salt'];
+  //        $salt = $tmp['salt'];
+    //test
             mysqli_stmt_fetch($stmt); 
             $password = hash('sha256',"$password"."$salt");
             //adding salt to given pass hashing and checking if the resulting hash is the same as the original
