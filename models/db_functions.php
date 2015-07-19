@@ -77,6 +77,22 @@
             return false ;
         }
     }
+    // collects user data an returns them  in array form
+    function getUserData ( $data ) {
+        global $db;
+        $uid = $data;
+        $stmt = mysqli_prepare($db,
+            "SELECT username , firstname , lastname , email FROM users WHERE uid = ? LIMIT 1");
+        mysqli_stmt_bind_param( $stmt, "s", $uid  );
+        mysqli_stmt_execute( $stmt);
+        mysqli_stmt_store_result( $stmt );
+        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email );
+        mysqli_stmt_fetch($stmt);
+        $retData = array ($username , $firstname ,$lastname ,$email );
+        return $retData;
+    }
+
+
 
 
 ?>
