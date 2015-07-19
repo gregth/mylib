@@ -64,7 +64,7 @@
             $messages[] = "Προέκυψε μη προβλέψιμο σφάλμα #A001";
             return $messages;
         }
-        if ( $data[ 'genresnum' ] >= 4 || $data[ 'authorsnum' ] >= 4 ) {
+        if ( $data[ 'genresnum' ] > 4 || $data[ 'authorsnum' ] > 4 ) {
             $messages[] = "Απαγορεύεται να υπάρχουν πάνω από 4 συγγραφείς και πάνω από 4 είδη";
             return $messages;
         }
