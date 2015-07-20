@@ -10,19 +10,17 @@
     <?php
         for ( $i = 0; $i < $authorsNum; $i++ ) {
     ?>
-            <input type="text" name="author<?php echo $i ?>" placeholder="Συγγραφέας" />
+            <input type="text" name="authors[]" placeholder="Συγγραφέας" />
     <?php
         }
     ?>
-    <input type="hidden" value="<?php echo $authorsNum ?>" name="authorsnum" />
     <?php
         for ( $i = 0; $i < $genresNum; $i++ ) {
     ?>
-            <input type="text" name="genre<?php echo $i ?>" placeholder="Είδος Βιβλίου" />
+            <input type="text" name="genres[]>" placeholder="Είδος Βιβλίου" />
     <?php
         }
     ?>
     <input type="text" name="isbn" id="isbn" placeholder="ISBN" />
     <input type="submit" value="Καταχώριση Βιβλίου" />
-    <input type="hidden" value="<?php echo $genresNum ?>" name="genresnum" />
 </form>
