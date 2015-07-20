@@ -8,11 +8,6 @@
         require 'views/header.php';
         if ( !$errors ) {
             //TODO add book to database
-<<<<<<< HEAD
-=======
-            addBook( $_POST );
-            echo 'Book to be added';
->>>>>>> upstream/master
         }
         else {
             require 'views/form_errors.php';
