@@ -1,6 +1,7 @@
 <?php
     require 'models/connect.php';
     require 'models/book_add_functions.php';
+    require 'models/image_upload.php';
     if ( !empty( $_POST ) ) {
         //In this case adds the book
         $errors = bookDataErrors( $_POST );
