@@ -5,7 +5,9 @@
         header( 'Location: login.php' );
     }
     // get user data from db
-    $data = getUserData($_SESSION[ 'userid' ] );
+    $data = getUserData( $_GET[ 'uid' ] );
+    if ( !$data )
+        header( 'Location: 404.php' );
     require 'views/header.php';
     require 'views/profile.php';
     require 'views/footer.php';
