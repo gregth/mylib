@@ -81,7 +81,6 @@
     function getUserData ( $data ) {
         global $db;
         $uid = $data;
-        echo $uid;
         $stmt = mysqli_prepare($db,
             "SELECT username , firstname , lastname , email FROM users WHERE uid = ? LIMIT 1");
         mysqli_stmt_bind_param( $stmt, "s", $uid  );
