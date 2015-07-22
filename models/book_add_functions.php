@@ -47,8 +47,8 @@
         return countWords( $string ) >= 2;
     }
 
-    function validateGenre( $string ) {
-        return strlen( $string ) >= 2;
+    function validateGenre( $data ) {
+        return isset( $data[ 'genres' ] );
     }
 
     //Returns false if book data are valid, otherwide a map with error messages
@@ -59,16 +59,15 @@
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
 
-        if ( !isset( $_POST[ 'authors' ] ) || !isset( $_POST[ 'genres' ] ) ) {
+        if ( !isset( $_POST[ 'authors' ] ) ) {
             $messages[] = "Διαπιστώσαμε σφάλμα. Παρακαλούμε συμπληρώστα τα στοιχεία ξανά";
             return $messages;
         }
         //Important checks
-        if ( count( $_POST[ 'authors' ] ) > 4 || count( $_POST[ 'genres' ] ) > 4 ) {
+        if ( count( $_POST[ 'authors' ] ) > 4 ) {
             $messages[] = "Διαπιστώσαμε σφάλμα. Παρακαλούμε συμπληρώστα τα στοιχεία ξανά";
             return $messages;
         }
-
 
         //Mainly validation checks
         if ( !validateTitle( $title ) ) {
@@ -80,19 +79,15 @@
         if ( !validateDescription( $description ) ) {
             $errors[] = "Η επίσημη περίληψη ενός βιβλίου αποτελείται τουλάχιστον από 10 λέξεις.";
         }
+        if ( !validateGenre( $data ) ) {
+            $errors[] = "Επιλέξτε κατηγορία που ανήκει το βιβλίο";
+        }
 
+        //TODO add vallidity check for image
         //Check if all author fields have content
         foreach ( $_POST[ 'authors' ] as $author ) {
             if ( !validateAuthor( $author ) ) {
                 $errors[] = "Συμπληρώστε τα ονόματα όλων των συγγραφέων";
-                break;
-            }
-        }
-
-        //Check if all genres fiels have content
-        foreach ( $_POST[ 'genres' ] as $genre ) {
-            if ( !validateGenre( $genre ) ) {
-                $errors[] = "Συμπληρώστε τα είδη στα οποία ανήκει το βιβλίο";
                 break;
             }
         }

@@ -1,5 +1,9 @@
-input {
-  width: 52%;
-  height: 22px;
-  margin: 5px;
+input, select, textarea {
+    width: 52%;
+    height: 22px;
+    margin: 5px;
+}
+
+select, textarea {
+    height: 50px;
 }

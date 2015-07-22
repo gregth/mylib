@@ -1,6 +1,7 @@
 <?php
     require 'models/connect.php';
     require 'models/book_add_functions.php';
+    require 'models/genres_functions.php';
     if ( !isset( $_SESSION[ 'userid' ] )  ){
         header( 'Location: login.php?ref=add_book' );
         die();
@@ -24,9 +25,8 @@
 
         //Make sure thatuser request at max 4 fields for author and at maxt 4 fields fot genres
         $authors = getAuthorsNum( $_GET );
-        $genres = getGenresNum( $_GET ) ;
-        if ( $authors != $_GET[ 'authors' ] || $genres != $_GET[ 'genres' ] ) {
-            header( 'Location: add_book.php?authors=' . $authors . '&genres=' . $genres );
+        if ( $authors != $_GET[ 'authors' ] ) {
+            header( 'Location: add_book.php?authors=' . $authors );
             die();
         }
         require 'views/header.php';
