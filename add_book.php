@@ -1,14 +1,17 @@
 <?php
     require 'models/connect.php';
     require 'models/book_add_functions.php';
-    require 'models/image_upload.php';
+    if ( !isset( $_SESSION[ 'userid' ] )  ){
+        header( 'Location: login.php?ref=add_book' );
+        die();
+    }
     if ( !empty( $_POST ) ) {
         //In this case adds the book
         $errors = bookDataErrors( $_POST );
         require 'views/header.php';
         if ( !$errors ) {
             //TODO add book to database
-            addBook( $_POST );
+            addBook( $_POST, $_FILES );
             echo 'Book to be added';
         }
         else {
@@ -24,7 +27,7 @@
         $genres = getGenresNum( $_GET ) ;
         if ( $authors != $_GET[ 'authors' ] || $genres != $_GET[ 'genres' ] ) {
             header( 'Location: add_book.php?authors=' . $authors . '&genres=' . $genres );
-            exit();
+            die();
         }
         require 'views/header.php';
         require 'views/add_book_form.php';
