@@ -106,16 +106,17 @@
     }
 
 
-    function addBook( $data ) {
+    function addBook( $data, $files ) {
         global $db;
-
+        require 'image_upload.php';
         //Insert title, description, cover url and isbn it books table
-        $title = $_POST[ 'title' ];
-        $description = $_POST[ 'description' ];
-        $isbn = $_POST[ 'isbn' ];
-        $path = 'Hey';
-        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, isbn = ?' );
-        mysqli_stmt_bind_param( $stmt, 'ssss',  $title, $description, $path, $isbn );
+        $title = $data[ 'title' ];
+        $description = $data[ 'description' ];
+        $isbn = $data[ 'isbn' ];
+        $path = imageUpload( $files, 'data/cover_images/' );
+        echo 'path is' . $path;
+        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, isbn = ?, uid = ?' );
+        mysqli_stmt_bind_param( $stmt, 'ssssi',  $title, $description, $path, $isbn, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );
         $bid = mysqli_insert_id( $db );
 

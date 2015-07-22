@@ -1,4 +1,4 @@
-<form method="POST" action="login.php" >
+<form method="POST" action="login.php<?php if ( isset( $_GET[ 'ref' ] ) ) echo '?ref=' . $_GET[ 'ref' ] ; ?>" >
     <input type="text" name="email" placeholder="e-mail" />
     <input type="password" name="password" placeholder="Κωδικός" />
     <input type="submit" value="Σύνδεση" />
