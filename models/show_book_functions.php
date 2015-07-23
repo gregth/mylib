@@ -1,5 +1,4 @@
 <?php
-    include 'debug.php';
 
     //Returns false if book not found, otherwise an array with book details
     function getBookDetails( $bid ) {
@@ -10,11 +9,12 @@
                 books.title,
                 books.description,
                 bookauthors.name,
-                bookgenres.genre
+                genres.name
             FROM
                 books CROSS
-                JOIN bookauthors ON books.bid = bookauthors.bid CROSS
-                JOIN bookgenres ON books.bid = bookgenres.bid
+                JOIN bookgenres ON bookgenres.bid = books.bid CROSS
+                JOIN genres ON genres.id = bookgenres.genreid CROSS
+                JOIN bookauthors ON bookauthors.bid = books.bid
             WHERE
                 books.bid = ?
             '
@@ -23,14 +23,17 @@
         mysqli_stmt_execute( $stmt );
         mysqli_stmt_store_result( $stmt );
         mysqli_stmt_bind_result( $stmt, $title, $description, $author, $genre );
-        $book = [];
+        $results = false;
         while ( mysqli_stmt_fetch( $stmt ) ) {
+            $results = true;
             $book[ 'title' ] = $title;
             $book[ 'description' ] = $description;
             $book[ 'authors' ][ $author ] = true;
-            $book[ 'genre' ][ $genre ] = true;
+            $book[ 'genres' ][ $genre ] = true;
         }
+        if ( !$results )
+            return false;
         return $book;
     }
-    formPrint( getBookDetails( 41 ) );
+
 ?>

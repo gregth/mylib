@@ -122,10 +122,10 @@
             mysqli_execute( $stmt );
         }
 
-        foreach( $data[ 'genres' ] as $genre ) {
+        foreach( $data[ 'genres' ] as $genreId => $genre ) {
             //Insert authors name in authors table
-            $stmt = mysqli_prepare( $db, 'INSERT INTO bookgenres SET bid = ?, genre = ?' );
-            mysqli_stmt_bind_param( $stmt, 'is', $bid, $genre );
+            $stmt = mysqli_prepare( $db, 'INSERT INTO bookgenres SET bid = ?, genreid = ?' );
+            mysqli_stmt_bind_param( $stmt, 'ii', $bid, $genreId );
             mysqli_execute( $stmt );
         }
     }
