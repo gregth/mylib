@@ -1,4 +1,5 @@
 <h1><?php echo $book[ 'title' ]; ?></h1>
+<img src="<?php echo $book[ 'image' ]; ?>" />
 <p><?php echo $book[ 'description' ]; ?></p>
 <ul id="authors" >
 <?php
