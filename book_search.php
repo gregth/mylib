@@ -5,8 +5,15 @@
         header( 'Location: login.php');
         die();
     }
-    $searchResults = bookSearch( $_POST[ 'userQuery' ] );
-    require 'views/header.php';
-    require 'views/search_results.php';
-    require 'views/footer.php';
+    if (isset($_POST[ 'userQuery' ] ) ) {
+        $searchResults = bookSearch( $_POST[ 'userQuery' ] );
+        require 'views/header.php';
+        require 'views/search_results.php';
+        require 'views/footer.php';
+    }
+    // no post data entered 
+    else {
+        header("Location: index.php");
+        die();
+    }
 ?>

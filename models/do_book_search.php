@@ -1,6 +1,6 @@
 <?php
     require 'connect.php';
-    // TODO under construction still testing
+    // TODO under construction still testing ***check if query is set or is blank
     //returns book ids or false when fails
     function bookSearch( $userQuery ) {
         $userQuery.="%";
