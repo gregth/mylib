@@ -1,4 +1,38 @@
 <?php
+    //Returns an array with all books, containing their title, image, descriptiom
+    function getAllBooks( ) {
+        global $db;
+        $stmt = mysqli_prepare(
+            $db,
+            'SELECT
+                books.bid,
+                books.title,
+                books.description,
+                bookauthors.name,
+                genres.name,
+                books.coverimage
+            FROM
+                books CROSS
+                JOIN bookgenres ON bookgenres.bid = books.bid CROSS
+                JOIN genres ON genres.id = bookgenres.genreid CROSS
+                JOIN bookauthors ON bookauthors.bid = books.bid
+            '
+        );
+        mysqli_stmt_execute( $stmt );
+        mysqli_stmt_store_result( $stmt );
+        mysqli_stmt_bind_result( $stmt,$id, $title, $description, $author, $genre, $image );
+        while ( mysqli_stmt_fetch( $stmt ) ) {
+            $book[ 'title' ] = $title;
+            $book[ 'image' ] = $image;
+            $book[ 'description' ] = $description;
+            $book[ 'authors' ][ $author ] = true;
+            $book[ 'genres' ][ $genre ] = true;
+            $books[ $id ] = $book;
+            static $i = 0;
+            $i++;
+        }
+        return $books;
+    }
 
     //Returns false if book not found, otherwise an array with book details
     function getBookDetails( $bid ) {
@@ -9,7 +43,8 @@
                 books.title,
                 books.description,
                 bookauthors.name,
-                genres.name
+                genres.name,
+                books.coverimage
             FROM
                 books CROSS
                 JOIN bookgenres ON bookgenres.bid = books.bid CROSS
@@ -22,7 +57,7 @@
         mysqli_stmt_bind_param( $stmt, 'i', $bid );
         mysqli_stmt_execute( $stmt );
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result( $stmt, $title, $description, $author, $genre );
+        mysqli_stmt_bind_result( $stmt, $title, $description, $author, $genre, $image );
         $results = false;
         while ( mysqli_stmt_fetch( $stmt ) ) {
             $results = true;
@@ -30,6 +65,7 @@
             $book[ 'description' ] = $description;
             $book[ 'authors' ][ $author ] = true;
             $book[ 'genres' ][ $genre ] = true;
+            $book[ 'image' ] = $image;
         }
         if ( !$results )
             return false;

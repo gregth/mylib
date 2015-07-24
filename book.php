@@ -11,4 +11,10 @@
             header( 'Location: 404.php' );
         }
     }
+    else {
+        $books = getAllBooks();
+        require 'views/header.php';
+        require 'views/books.php';
+        require 'views/footer.php';
+    }
 ?>

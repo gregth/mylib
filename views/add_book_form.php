@@ -1,5 +1,4 @@
-<?php
-    $authorsNum = getAuthorsNum( $_GET );
+<?php $authorsNum = getAuthorsNum( $_GET );
     $genres = getGenres();
 ?>
 <div>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</div>
