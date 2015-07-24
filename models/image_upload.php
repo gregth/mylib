@@ -1,19 +1,18 @@
 <?php
-    require 'connect.php';
     //function to upload files , returns file path on success and false on failure
-   //allages sto path wste na doulevei me to localhost
-    //themata asfaleias
-    function imageUploader( $file, $path ) {
-        if (!empty( $_FILES ) ) {
+    //TODO security checks
+    function imageUpload( $file, $directory ) {
+        if (!empty( $file ) ) {
             $filename = $file[ 'cover_img' ][ 'tmp_name' ];
-            $path.= $file [ 'cover_img' ][ 'name' ];
+            $path = $directory . $file [ 'cover_img' ][ 'name' ];
             $success = move_uploaded_file( $filename, $path );
             if ( $success ) {
-                return $file[ 'cover_img' ][ 'name' ];
+                return $path;
             }
             else {
                 return false;
             }
         }
+        return false;
     }
 ?>

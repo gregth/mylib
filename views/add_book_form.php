@@ -1,28 +1,29 @@
 <?php
     $authorsNum = getAuthorsNum( $_GET );
-    $genresNum = getGenresNum( $_GET );
+    $genres = getGenres();
 ?>
 <div>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</div>
-<form action="add_book.php?authors=<?php echo $authorsNum ?>&genres=<?php echo $genresNum ?>" method="post" enctype="multipart/form-data" >
+<form action="add_book.php?authors=<?php echo $authorsNum ?>" method="post" enctype="multipart/form-data" >
     <input type="text" name="title" id="title" placeholder="Τίτλος Βιβλίου" />
-    <input type="text" name="description" id="description" placeholder="Περίληψη Βιβλίου" />
+    <textarea name="description" id="description" >Περίληψη Βιβλίου</textarea>
     <input type="file" name="cover_img" id="cover_img" placeholder="Εικόνα Εξωφύλλου" />
     <?php
         for ( $i = 0; $i < $authorsNum; $i++ ) {
     ?>
-            <input type="text" name="author<?php echo $i ?>" placeholder="Συγγραφέας" />
+            <input type="text" name="authors[]" placeholder="Συγγραφέας" />
     <?php
         }
     ?>
-    <input type="hidden" value="<?php echo $authorsNum ?>" name="authorsnum" />
+    <select multiple name="genres[]" >
     <?php
-        for ( $i = 0; $i < $genresNum; $i++ ) {
+        foreach ( $genres as $id => $genre ) {
     ?>
-            <input type="text" name="genre<?php echo $i ?>" placeholder="Είδος Βιβλίου" />
+      <option value="<?php echo $id; ?>"><?php echo $genre; ?></option>
     <?php
         }
     ?>
+    </select>
     <input type="text" name="isbn" id="isbn" placeholder="ISBN" />
     <input type="submit" value="Καταχώριση Βιβλίου" />
-    <input type="hidden" value="<?php echo $genresNum ?>" name="genresnum" />
+
 </form>

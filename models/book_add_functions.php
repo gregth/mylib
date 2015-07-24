@@ -47,8 +47,8 @@
         return countWords( $string ) >= 2;
     }
 
-    function validateGenre( $string ) {
-        return strlen( $string ) >= 2;
+    function validateGenre( $data ) {
+        return isset( $data[ 'genres' ] );
     }
 
     //Returns false if book data are valid, otherwide a map with error messages
@@ -59,83 +59,73 @@
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
 
+        if ( !isset( $_POST[ 'authors' ] ) ) {
+            $messages[] = "Διαπιστώσαμε σφάλμα. Παρακαλούμε συμπληρώστα τα στοιχεία ξανά";
+            return $messages;
+        }
         //Important checks
-        if ( !is_numeric( $data[ 'genresnum' ] ) && !is_numeric( $data[ 'authorsnum' ] ) ) {
-            $messages[] = "Προέκυψε μη προβλέψιμο σφάλμα #A001";
+        if ( count( $_POST[ 'authors' ] ) > 4 ) {
+            $messages[] = "Διαπιστώσαμε σφάλμα. Παρακαλούμε συμπληρώστα τα στοιχεία ξανά";
             return $messages;
         }
-        if ( $data[ 'genresnum' ] > 4 || $data[ 'authorsnum' ] > 4 ) {
-            $messages[] = "Απαγορεύεται να υπάρχουν πάνω από 4 συγγραφείς και πάνω από 4 είδη";
-            return $messages;
-        }
-
 
         //Mainly validation checks
+        if ( !validateTitle( $title ) ) {
+            $errors[] = "Ο τίτλος ενός βιβλίου δεν επιτρέπεται να είναι κενός";
+        }
         if ( !validateISBN( $isbn ) ) {
             $errors[] = "Το ISBN αποτελείται από 13 ψηφία χωρίς παύλες.";
         }
         if ( !validateDescription( $description ) ) {
             $errors[] = "Η επίσημη περίληψη ενός βιβλίου αποτελείται τουλάχιστον από 10 λέξεις.";
         }
-        if ( !validateTitle( $title ) ) {
-            $errors[] = "Ο τίτλος ενός βιβλίου δεν επιτρέπεται να είναι κενός";
+        if ( !validateGenre( $data ) ) {
+            $errors[] = "Επιλέξτε κατηγορία που ανήκει το βιβλίο";
         }
 
+        //TODO add vallidity check for image
         //Check if all author fields have content
-        $authorsNum = $data[ 'authorsnum' ];
-        for ( $i = 0; $i < $authorsNum; $i++ ) {
-            if ( !validateAuthor( $data[ 'author' . $i ] ) ) {
+        foreach ( $_POST[ 'authors' ] as $author ) {
+            if ( !validateAuthor( $author ) ) {
                 $errors[] = "Συμπληρώστε τα ονόματα όλων των συγγραφέων";
                 break;
             }
         }
 
-        //Check if all genres fiels have content
-        $genresNum = $data[ 'genresnum' ];
-        for ( $i = 0; $i < $genresNum; $i++ ) {
-            if ( !validateGenre( $data[ 'genre' . $i ] )  ) {
-                $errors[] = "Συμπληρώστε τα είδη στα οποία ανήκει το βιβλίο";
-                break;
-            }
-        }
         if ( empty( $errors ) ) {
             return false;
         }
         else {
             return $errors;
         }
-        //TODO Check dor alterations at hidden input fields
     }
 
 
-    function addBook( $data ) {
+    function addBook( $data, $files ) {
         global $db;
-
+        require 'image_upload.php';
         //Insert title, description, cover url and isbn it books table
-        $title = $_POST[ 'title' ];
-        $description = $_POST[ 'description' ];
-        $isbn = $_POST[ 'isbn' ];
-        $path = 'Hey';
-        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, isbn = ?' );
-        mysqli_stmt_bind_param( $stmt, 'ssss',  $title, $description, $path, $isbn );
+        $title = $data[ 'title' ];
+        $description = $data[ 'description' ];
+        $isbn = $data[ 'isbn' ];
+        $path = imageUpload( $files, 'data/cover_images/' );
+        echo 'path is' . $path;
+        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, isbn = ?, uid = ?' );
+        mysqli_stmt_bind_param( $stmt, 'ssssi',  $title, $description, $path, $isbn, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );
         $bid = mysqli_insert_id( $db );
 
-        $num = $data[ 'authorsnum' ];
-        for ( $i = 0; $i < $num; $i++ ) {
+        foreach ( $data[ 'authors' ] as $author ) {
             //Insert authors name in authors table
-            $authorName = $_POST[ 'author' . $i ];
             $stmt = mysqli_prepare( $db, 'INSERT INTO bookauthors SET bid = ?, name = ?' );
-            mysqli_stmt_bind_param( $stmt, 'is', $bid, $authorName );
+            mysqli_stmt_bind_param( $stmt, 'is', $bid, $author );
             mysqli_execute( $stmt );
         }
 
-        $num = $data[ 'genresnum' ];
-        for ( $i = 0; $i < $num; $i++ ) {
+        foreach( $data[ 'genres' ] as $genreId => $genre ) {
             //Insert authors name in authors table
-            $genreName = $_POST[ 'genre' . $i ];
-            $stmt = mysqli_prepare( $db, 'INSERT INTO bookgenres SET bid = ?, genre = ?' );
-            mysqli_stmt_bind_param( $stmt, 'is', $bid, $genreName );
+            $stmt = mysqli_prepare( $db, 'INSERT INTO bookgenres SET bid = ?, genreid = ?' );
+            mysqli_stmt_bind_param( $stmt, 'ii', $bid, $genreId );
             mysqli_execute( $stmt );
         }
     }
