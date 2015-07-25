@@ -55,7 +55,6 @@
     //TODO check for cocver image validity
     function bookDataErrors( $data ) {
         $errors = [];
-        $isbn = $data[ 'isbn' ];
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
 
@@ -72,9 +71,6 @@
         //Mainly validation checks
         if ( !validateTitle( $title ) ) {
             $errors[] = "Ο τίτλος ενός βιβλίου δεν επιτρέπεται να είναι κενός";
-        }
-        if ( !validateISBN( $isbn ) ) {
-            $errors[] = "Το ISBN αποτελείται από 13 ψηφία χωρίς παύλες.";
         }
         if ( !validateDescription( $description ) ) {
             $errors[] = "Η επίσημη περίληψη ενός βιβλίου αποτελείται τουλάχιστον από 10 λέξεις.";
@@ -109,9 +105,8 @@
         $description = $data[ 'description' ];
         $isbn = $data[ 'isbn' ];
         $path = imageUpload( $files, 'data/cover_images/' );
-        echo 'path is' . $path;
-        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, isbn = ?, uid = ?' );
-        mysqli_stmt_bind_param( $stmt, 'ssssi',  $title, $description, $path, $isbn, $_SESSION[ 'userid' ] );
+        $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, uid = ?' );
+        mysqli_stmt_bind_param( $stmt, 'sssi',  $title, $description, $path, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );
         $bid = mysqli_insert_id( $db );
 
@@ -128,5 +123,6 @@
             mysqli_stmt_bind_param( $stmt, 'ii', $bid, $genreId );
             mysqli_execute( $stmt );
         }
+        return $bid;
     }
 ?>

@@ -2,7 +2,7 @@
     $genres = getGenres();
 ?>
 <div>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</div>
-<form action="add_book.php?authors=<?php echo $authorsNum ?>" method="post" enctype="multipart/form-data" >
+<form action="add_book.php?authors=<?php echo $authorsNum ?><?php if ( !empty( $_GET[ 'ref' ] ) ) echo '&ref=' . $_GET[ 'ref' ];?>" method="post" enctype="multipart/form-data" >
     <input type="text" name="title" id="title" placeholder="Τίτλος Βιβλίου" />
     <textarea name="description" id="description" >Περίληψη Βιβλίου</textarea>
     <input type="file" name="cover_img" id="cover_img" placeholder="Εικόνα Εξωφύλλου" />
@@ -22,7 +22,6 @@
         }
     ?>
     </select>
-    <input type="text" name="isbn" id="isbn" placeholder="ISBN" />
     <input type="submit" value="Καταχώριση Βιβλίου" />
 
 </form>

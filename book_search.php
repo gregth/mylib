@@ -11,7 +11,7 @@
         require 'views/search_results.php';
         require 'views/footer.php';
     }
-    // no post data entered 
+    // no post data entered
     else {
         header("Location: index.php");
         die();

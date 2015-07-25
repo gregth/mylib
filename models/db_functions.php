@@ -56,15 +56,17 @@
             //adding salt to given pass hashing and checking if the resulting hash is the same as the original
             mysqli_stmt_close($stmt);
             $stmt = mysqli_prepare($db,
-                "SELECT uid FROM users WHERE email = ? AND password = ?");
+                "SELECT uid, username, email FROM users WHERE email = ? AND password = ?");
             mysqli_stmt_bind_param($stmt,"ss",$email,$password);
             mysqli_stmt_execute($stmt);
             mysqli_stmt_store_result($stmt);
-            mysqli_stmt_bind_result($stmt,$user);
+            mysqli_stmt_bind_result($stmt, $uid, $username, $email);
             if(mysqli_stmt_num_rows($stmt))
             {
                 mysqli_stmt_fetch($stmt);
                 mysqli_stmt_close($stmt);
+                $user = [ 'userid' => $uid, 'username' => $username, 'email' => $email ];
+                var_dump( $user );
                 return $user;
             }
             else

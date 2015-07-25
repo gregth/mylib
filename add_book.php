@@ -11,9 +11,14 @@
         $errors = bookDataErrors( $_POST );
         require 'views/header.php';
         if ( !$errors ) {
-            //TODO add book to database
-            addBook( $_POST, $_FILES );
-            echo 'Book to be added';
+            $bid = addBook( $_POST, $_FILES );
+            if ( $_GET[ 'ref' ] == 'cp' ) {
+                header( 'Location: add_book_cp.php?bid=' . $bid );
+                die();
+            }
+            header( 'Location: book.php?bid=' . $bid );
+            die();
+
         }
         else {
             require 'views/form_errors.php';
@@ -26,7 +31,11 @@
         //Make sure thatuser request at max 4 fields for author and at maxt 4 fields fot genres
         $authors = getAuthorsNum( $_GET );
         if ( $authors != $_GET[ 'authors' ] ) {
-            header( 'Location: add_book.php?authors=' . $authors );
+            $path = 'add_book.php?authors=' . $authors;
+            if ( isset( $_GET[ 'ref' ] ) ) {
+                $path .= '&ref=' . $_GET[ 'ref' ];
+            }
+            header( 'Location:' . $path );
             die();
         }
         require 'views/header.php';

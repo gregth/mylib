@@ -14,15 +14,17 @@
         }
         else {
             //Authenticate user
-            $value = authenticate_user( $_POST );
-            if ( $value === false ) {
+            $user = authenticate_user( $_POST );
+            if ( $user === false ) {
                 require 'views/header.php';
                 require 'views/login_errors.php';
                 require 'views/login_form.php';
                 require 'views/footer.php';
             }
             else {
-                $_SESSION[ 'userid' ] = $value;
+                foreach ( $user as $key => $value ) {
+                    $_SESSION[ $key ] = $value;
+                }
                 redirectFromLogin( $_GET );
             }
         }

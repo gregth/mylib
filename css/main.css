@@ -7,3 +7,22 @@ input, select, textarea {
 select, textarea {
     height: 50px;
 }
+
+body img {
+  height: 200px;
+}
+body li {
+  font-size: 15px;
+}
+
+#top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: grey;
+  width: 100%;
+}
+
+body { 
+    margin-top: 200px;
+}

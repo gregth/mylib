@@ -1,4 +1,4 @@
-<form class = "addBookInstance" action = "add_book_cp.php<?php if ( isset( $_GET[ 'bid' ] ) ) echo '?bid=' . $_GET[ 'bid' ] ?>" method = "post" >
+<form action = "add_book_cp.php<?php if ( isset( $_GET[ 'bid' ] ) ) echo '?bid=' . $_GET[ 'bid' ] ?>" method = "POST" >
     Description :
     <input type = "text" name = "description" placeholder = "Add a description ..."/>
     Image :

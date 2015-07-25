@@ -23,7 +23,7 @@
         mysqli_stmt_bind_result( $stmt,$id, $title, $description, $author, $genre, $image );
         while ( mysqli_stmt_fetch( $stmt ) ) {
             $book[ 'title' ] = $title;
-            $book[ 'image' ] = $image;
+            $book[ 'img' ] = $image;
             $book[ 'description' ] = $description;
             $book[ 'authors' ][ $author ] = true;
             $book[ 'genres' ][ $genre ] = true;
@@ -66,6 +66,7 @@
             $book[ 'authors' ][ $author ] = true;
             $book[ 'genres' ][ $genre ] = true;
             $book[ 'image' ] = $image;
+            $book[ 'bid' ] = $bid;
         }
         if ( !$results )
             return false;
