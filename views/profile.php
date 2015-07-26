@@ -1,4 +1,5 @@
 <div class="profle">
+    <img src="<?php echo $data[ 'img' ]; ?>" />
     <ul class="details">
     <li>Όνομα προφίλ χρήστη : <?php echo $data[ 'username' ];?></li>
     <li>Όνοματεπώνυμο χρήστη : <?php echo $data[ 'firstname' ]." ". $data[ 'lastname' ];?> </li>

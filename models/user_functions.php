@@ -1,8 +1,6 @@
 <?php
-    //user functions
-    include 'connect.php';
-
     //Retur fail if it fails registering the user, otherwise returns the user id
+    require 'image_upload.php';
     function  register_user($data)
     {
         global $db;
@@ -10,11 +8,12 @@
         $first_name = $data['first_name'];
         $last_name = $data['last_name'];
         $email = $data['email'];
+        $path = imageUpload( 'data/profile_imgs/', 'profileimg' );
         $hash = hash_fun($data['password']); //hash with salt at the end
         list($passhash,$salt) = explode("^",$hash);
         $stmt = mysqli_prepare($db,
-            "INSERT INTO users SET username = ? , password = ? , salt = ? , firstname = ? , lastname = ? , email = ? ");
-        mysqli_stmt_bind_param($stmt,"ssssss",$username,$passhash,$salt,$first_name,$last_name,$email);
+            "INSERT INTO users SET username = ? , password = ? , salt = ? , firstname = ? , lastname = ? , email = ?, profileimg = ? ");
+        mysqli_stmt_bind_param($stmt,"sssssss",$username,$passhash,$salt,$first_name,$last_name,$email, $path );
         mysqli_stmt_execute($stmt);
         if ( mysqli_affected_rows($db) != 1 ) {
             return false;
@@ -66,7 +65,6 @@
                 mysqli_stmt_fetch($stmt);
                 mysqli_stmt_close($stmt);
                 $user = [ 'userid' => $uid, 'username' => $username, 'email' => $email ];
-                var_dump( $user );
                 return $user;
             }
             else
@@ -80,19 +78,18 @@
         }
     }
     // collects user data an returns them  in array form
-    function getUserData ( $data ) {
+    function getUserData ( $uid ) {
         global $db;
-        $uid = $data;
         $stmt = mysqli_prepare($db,
-            "SELECT username , firstname , lastname , email FROM users WHERE uid = ? LIMIT 1");
+            "SELECT username , firstname , lastname , email, profileimg FROM users WHERE uid = ? LIMIT 1");
         mysqli_stmt_bind_param( $stmt, "s", $uid  );
         mysqli_stmt_execute( $stmt);
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email );
+        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email, $img );
         if ( mysqli_stmt_fetch($stmt) == NULL ) {
             return false;
         }
-        $retData = [ 'username' => $username, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email ];
+        $retData = [ 'userid' => $uid, 'username' => $username, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'img' => $img ];
         return $retData;
     }
 

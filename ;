@@ -1,11 +1,14 @@
 <?php
     require 'models/connect.php';
     require 'models/add_book_cp_functions.php';
-    require 'models/redirect_functions.php';
 
     //Check if user has logged in. If not redirect him to login page
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
-        redirect( 'login.php', [ 'ref' => 'add_book_cp' ], [ 'bid' ], 'force' );
+        $path = 'login.php?ref=add_book_cp';
+        if ( isset( $_GET[ 'bid' ] ) ) {
+            $path .= '&bid=' . $_GET[ 'bid' ];
+        }
+        header( 'Location:' . $path );
     }
 
     //Check if is set he bid of the book, whose copy is beeing added. If not redirect him to search and sleect page

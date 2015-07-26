@@ -104,7 +104,7 @@
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
         $isbn = $data[ 'isbn' ];
-        $path = imageUpload( $files, 'data/cover_images/' );
+        $path = imageUpload( $files, 'data/cover_images/', 'coverimg' );
         $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, uid = ?' );
         mysqli_stmt_bind_param( $stmt, 'sssi',  $title, $description, $path, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );

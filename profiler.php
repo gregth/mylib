@@ -1,11 +1,12 @@
 <?php
-    require 'models/db_functions.php';
+    require 'models/connect.php';
+    require 'models/user_functions.php';
     require 'models/comment_functions.php';
+    require 'models/redirect_functions.php';
     // if note logged in , redirect to login page
     // better replace userid with profileid as a better fitting name
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
-        header( 'Location: login.php' );
-        die();
+        redirect( 'login.php', [ 'ref' => 'profile' ], [ 'uid' ],  'force' );
     }
     // get user data from db
     $data = getUserData( $_GET[ 'uid' ] );

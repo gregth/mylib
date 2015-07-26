@@ -1,9 +1,11 @@
 <?php
+    require 'models/connect.php';
     require 'models/redirect_functions.php';
-    require( 'models/db_functions.php' );
+    require 'models/user_functions.php';
+    require 'models/get_functions.php';
     if ( isset( $_SESSION[ 'userid' ] ) ) {
         //User has logged in, Redirect to index.php
-        redirectFromLogin( $_GET );
+        redirect('profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ], [] , 'force' );
     }
     else {
         if ( empty( $_POST ) ) {
@@ -25,7 +27,7 @@
                 foreach ( $user as $key => $value ) {
                     $_SESSION[ $key ] = $value;
                 }
-                redirectFromLogin( $_GET );
+                redirect( 'index.php');
             }
         }
     }

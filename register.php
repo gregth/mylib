@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    require 'models/connect.php';
     //If user has logged in, redirect to index.php
     if ( isset( $_SESSION[ 'userid' ] ) ) {
         header( 'Location: index.php'  );
@@ -7,8 +7,7 @@
 
     //User has not logged in, dhow register form
     if ( !empty( $_POST ) ) {
-        include 'models/connect.php';
-        include 'models/db_functions.php';
+        include 'models/user_functions.php';
         include 'models/validation_functions.php';
 
         //get data errors returns a table with all errors
@@ -20,8 +19,13 @@
             $result = register_user($_POST);
             if ( $result !== false )
             {
-                $_SESSION[ 'userid' ] = $result;
-                header("Location: index.php");
+                $user = getUserData( $result );
+                foreach ( $user as $key => $value ) {
+                    echo $key . '=>' . $value;
+                    $_SESSION[ $key ] = $value;
+
+                }
+                //header("Location: index.php");
             }
             else
             {
