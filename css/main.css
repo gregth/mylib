@@ -1,6 +1,5 @@
 input, select, textarea {
-    width: 52%;
-    height: 22px;
+    width: 100%;
     margin: 5px;
 }
 
@@ -24,5 +23,5 @@ body li {
 }
 
 body { 
-    margin-top: 200px;
+    margin-top: 200px!important;
 }

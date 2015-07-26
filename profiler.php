@@ -14,6 +14,7 @@
         header( 'Location: 404.php' );
         die();
     }
+    $title = 'Προφίλ ' . $data[ 'username' ];
     require 'views/header.php';
     require 'views/profile.php';
     $comments = getProfileComments( $_GET[ 'uid' ] );

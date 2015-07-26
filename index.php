@@ -2,8 +2,8 @@
     require 'models/connect.php';
     require 'views/header.php';
 ?>
-    <a href="profiler.php?uid=<?php echo $_SESSION[ 'userid' ]; ?>" >
-        My Profile
+    <a href="login.php" >
+        Σύνδεση
     </a>
     <a href="logout.php" >Αποσύνδεση</a>
     <div class="searchBox">

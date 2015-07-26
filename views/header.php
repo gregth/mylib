@@ -6,7 +6,9 @@
     <title>
       <?php echo $title ?>
     </title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="css/main.css" type="text/css" />
   </head>
   <body>
   <?php require 'top_bar.php' ?>
+  <div class="container" >

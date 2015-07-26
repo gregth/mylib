@@ -18,6 +18,7 @@
             header( 'Location: 404.php' );
             die();
         }
+        $title = 'Δήλωση αντιτύπου για "' .$book[ 'title' ] . '"';
         require 'views/header.php';
         require 'views/book_copy_form.php';
         require 'views/book.php';

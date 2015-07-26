@@ -52,11 +52,14 @@
                     $path = createUrl( 'profiler.php', $params, $getParamsKeys );
                     break;
                 default:
-                    $path .= createUrl( $path, $params, $getParamsKeys );
+                    $path = createUrl( $path, $params, $getParamsKeys );
             }
             header( 'Location: ' . $path );
             die();
         }
+        $path = createUrl( $path, $params, $getParamsKeys );
+        header( 'Location: ' . $path );
+        die();
     }
 ?>
 

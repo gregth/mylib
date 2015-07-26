@@ -3,6 +3,7 @@
     require 'models/redirect_functions.php';
     require 'models/user_functions.php';
     require 'models/get_functions.php';
+    $title = 'Σύνδεση Χρήστη';
     if ( isset( $_SESSION[ 'userid' ] ) ) {
         //User has logged in, Redirect to index.php
         redirect('profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ], [] , 'force' );
@@ -27,7 +28,7 @@
                 foreach ( $user as $key => $value ) {
                     $_SESSION[ $key ] = $value;
                 }
-                redirect( 'index.php');
+                redirect( 'index.php' );
             }
         }
     }

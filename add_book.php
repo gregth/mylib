@@ -12,13 +12,7 @@
         require 'views/header.php';
         if ( !$errors ) {
             $bid = addBook( $_POST, $_FILES );
-            if ( $_GET[ 'ref' ] == 'cp' ) {
-                header( 'Location: add_book_cp.php?bid=' . $bid );
-                die();
-            }
-            header( 'Location: book.php?bid=' . $bid );
-            die();
-
+            redirect( 'book.php', [ 'bid' => $bid ], [] );
         }
         else {
             require 'views/form_errors.php';
@@ -31,8 +25,9 @@
         //Make sure thatuser request at max 4 fields for author and at maxt 4 fields fot genres
         $authors = getAuthorsNum( $_GET );
         if ( $authors != $_GET[ 'authors' ] ) {
-            redirect( 'login.php', [ 'authors' => 1 ] );
+            redirect( 'add_book.php', [ 'authors' => 1 ], [], 'force' );
         }
+        $title = 'Προσθήκη Βιβλίου';
         require 'views/header.php';
         require 'views/add_book_form.php';
         require 'views/footer.php';
