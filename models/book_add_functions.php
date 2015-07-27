@@ -103,8 +103,8 @@
         //Insert title, description, cover url and isbn it books table
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
-        $isbn = $data[ 'isbn' ];
-        $path = imageUpload( $files, 'data/cover_images/', 'coverimg' );
+// not used ?       $isbn = $data[ 'isbn' ];
+        $path = imageUpload( 'data/cover_images/', 'cover_img' );
         $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, uid = ?' );
         mysqli_stmt_bind_param( $stmt, 'sssi',  $title, $description, $path, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );
