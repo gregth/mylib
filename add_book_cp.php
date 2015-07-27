@@ -10,7 +10,12 @@
 
     //Check if is set he bid of the book, whose copy is beeing added. If not redirect him to search and sleect page
     if ( isset( $_GET[ 'bid' ] ) ) {
-
+        //if description and image are set add the book copy to the database and redirect to user profile so he can see the list of his book copies (to be added)
+        if ( isset ( $_POST[ 'description' ] ) && !empty( $_FILES['userImage'] ) ) {
+            addBookCp($_GET, $_POST );
+            header("Location: profiler.php?uid=".$_SESSION[ 'userid' ] );
+            die();
+        }
         //Show add copy form and append the book details
         require 'models/show_book_functions.php';
         $book = getBookDetails( $_GET[ 'bid' ] );
