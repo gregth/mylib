@@ -1,4 +1,5 @@
 <?php
+    require "models/connect.php";
     require 'models/do_book_search.php';
     //if client is not logged in redirect to login.php
     if ( empty( $_SESSION ) ) {
