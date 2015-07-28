@@ -11,4 +11,3 @@
   </head>
   <body>
   <?php require 'top_bar.php' ?>
-  <div class="container" >

@@ -5,7 +5,7 @@
         foreach ( $searchResults as $book ) {
 ?>
             <li>
-                <a href="book.php?id=<?php echo $book[ 'bid' ] ?>">
+                <a href="book.php?bid=<?php echo $book[ 'bid' ] ?>">
                     <h2><?php echo $book[ 'title' ]; ?></h2>
                 </a>
             </li>

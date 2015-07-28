@@ -1,22 +1,31 @@
-<div>
-Aφήστε το σχόλιο σας :
-    <form action = "addcomment.php?profileid=<?php echo $_GET[ 'uid' ]; ?> " method = "post">
-        <input type = "text" name = "comment" placeholder = "Σχολιάστε"/>
-        <input type = "submit" value = "Αποστόλη">
+<div class="group" id=comment-form >
+    <h2>Aφήστε το σχόλιο σας για το χρήστη:</h2>
+    <form action = "<?php echo createUrl( 'addcomment.php', [], [ 'bcid', 'uid' ] ); ?>" method = "post">
+        <input type = "text" name = "comment" placeholder = "Πληκτρολογήστε εδώ το σχόλιό σας"/>
+        <input type = "submit" value = "Προσθήκη σχολίου">
     </form>
-Σχολια :
-     <ul> 
+</div>
+<div>
+    <h2>Σχόλια</h2>
+     <ul>
             <?php
                  if ( empty($comments ) ) {
-                    die("no comments found");
-                 }
-                 foreach ( $comments as $value ) {
+             ?>
+                <li>Δεν υπάρχει κανένα σχόλιο μέχρι στιγμής</li>
+            <?php
+                }
+                else {
+                    foreach ( $comments as $value ) {
             ?>
-                <li><?php echo $value[ 'comment' ]." authored by : ".$value[ 'author' ];?></li>
-            <?php }
+                <li class="comment" >
+                    <p id="comment-body"><?php echo $value[ 'comment' ]; ?></p>
+                    <span>γράφτηκε από</span>
+                    <span id="author"><?php echo $value[ 'author' ]; ?></span>
+                </li>
+            <?php
+                    }
+                }
             ?>
      </ul>
 </div>
-
-
 

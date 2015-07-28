@@ -15,7 +15,12 @@
                 books CROSS
                 JOIN bookgenres ON bookgenres.bid = books.bid CROSS
                 JOIN genres ON genres.id = bookgenres.genreid CROSS
-                JOIN bookauthors ON bookauthors.bid = books.bid
+                JOIN bookauthors ON bookauthors.bid = books.bid CROSS
+                JOIN bcopies ON bcopies.bid = books.bid
+            WHERE
+                bcopies.sold = 0
+            ORDER BY
+                books.title ASC
             '
         );
         mysqli_stmt_execute( $stmt );

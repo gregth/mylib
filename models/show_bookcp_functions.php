@@ -1,24 +1,25 @@
 <?php
-
-//return an array with Bcopies that belong to the user specified from uid , on failure returns false
-    function getBcopiesByUid( $uid ) {
-        global $db ;
-        $sql_query = "Select bcid FROM users CROSS JOIN bcopies ON users.uid = bcopies.uid WHERE users.uid = ? ORDER BY time DESC";
+    function getLatestBooks( $number ) {
+        global $db;
+        $sql_query = 'SELECT books.bid, books.title, books.coverimage
+            FROM bcopies CROSS
+            JOIN books ON books.bid = bcopies.bid
+            GROUP BY books.bid
+            ORDER BY bcopies.timecreated DESC
+            LIMIT ?
+            ';
         $stmt = mysqli_prepare( $db, $sql_query );
-        mysqli_stmt_bind_param( $stmt, 'i', $uid );
+        mysqli_stmt_bind_param( $stmt, 'i', $number );
         mysqli_stmt_execute( $stmt );
-        mysqli_store_result( $stmt );
-        mysqli_stmt_bind_result($stmt, $bcid);
-        while(mysqli_stmt_fetch( $stmt ) ) {
-            $bids[] = $bid ;
-        }
-        if (!isset( $bids ) ) {
-            return false ;
-        }
-        return $bids ;
+        mysqli_stmt_store_result( $stmt );
+        mysqli_stmt_bind_result( $stmt, $bid, $title, $image );
+        while( mysqli_stmt_fetch( $stmt ) ) {
+            $books[ $bid ][ 'bid' ] = $bid;
+            $books[ $bid ][ 'img' ] = $image ;
+            $books[ $bid ][ 'title' ] = $title ;
+         }
+         return $books;
     }
-
-
 
  //Returns false if bookcp not found, otherwise an array with bookcp details
     function getBookcpDetails( $bcid ) {
@@ -37,6 +38,6 @@
          }
          return false;
     }
-    
+
 
 ?>

@@ -1,12 +1,11 @@
 <?php
     require 'models/connect.php';
-    require 'models/redirect_functions.php';
+    require 'models/redirect.php';
     require 'models/user_functions.php';
-    require 'models/get_functions.php';
     $title = 'Σύνδεση Χρήστη';
     if ( isset( $_SESSION[ 'userid' ] ) ) {
         //User has logged in, Redirect to index.php
-        redirect('profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ], [] , 'force' );
+        standardRedirect('profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ] );
     }
     else {
         if ( empty( $_POST ) ) {
@@ -28,7 +27,7 @@
                 foreach ( $user as $key => $value ) {
                     $_SESSION[ $key ] = $value;
                 }
-                redirect( 'index.php' );
+                dynamicRedirect( 'index.php' );
             }
         }
     }

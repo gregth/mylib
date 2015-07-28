@@ -7,14 +7,15 @@
     // if note logged in , redirect to login page
     // better replace userid with profileid as a better fitting name
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
-        redirect( 'login.php', [ 'ref' => 'profile' ], [ 'uid' ],  'force' );
+        standardRedirect( 'login.php', [ 'ref' => 'profile' ], [ 'uid' ] );
     }
+
     // get user data from db
     $data = getUserData( $_GET[ 'uid' ] );
     if ( !$data ) {
-        header( 'Location: 404.php' );
-        die();
+        standardRedirect( 'profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ] );
     }
+
     $title = 'Προφίλ ' . $data[ 'username' ];
     require 'views/header.php';
     require 'views/profile.php';
