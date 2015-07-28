@@ -6,11 +6,5 @@
 
     $books = getLatestBooks( 5 );
     require 'views/new_books.php';
-?>
-    <a href="login.php" >
-        Σύνδεση
-    </a>
-    <a href="logout.php" >Αποσύνδεση</a>
-<?php
     require 'views/footer.php';
 ?>
