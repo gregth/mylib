@@ -3,6 +3,7 @@
     require 'models/user_functions.php';
     require 'models/comment_functions.php';
     require 'models/redirect_functions.php';
+    require 'models/show_bookcp_functions.php';
     // if note logged in , redirect to login page
     // better replace userid with profileid as a better fitting name
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
@@ -19,5 +20,8 @@
     require 'views/profile.php';
     $comments = getProfileComments( $_GET[ 'uid' ] );
     require 'views/profile_comments.php';
+    $bookCopies = getBcopiesByUid ( $_GET[ 'uid' ] );
+    var_dump($bookCopies);
+    require 'views/bookcp_list.php';
     require 'views/footer.php';
 ?>
