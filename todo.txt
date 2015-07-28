@@ -1,0 +1,1 @@
+If user uploads an image with the same name, avoid replacing it.

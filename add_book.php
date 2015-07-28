@@ -2,9 +2,9 @@
     require 'models/connect.php';
     require 'models/book_add_functions.php';
     require 'models/genres_functions.php';
-    require 'models/redirect_functions.php';
+    require 'models/redirect.php';
     if ( !isset( $_SESSION[ 'userid' ] )  ){
-        redirect( 'login.php', [ 'ref' => 'add_book' ] );
+        standardRedirect( 'login.php', [ 'ref' => 'add_book' ] );
     }
     if ( !empty( $_POST ) ) {
         //In this case adds the book
@@ -12,7 +12,7 @@
         require 'views/header.php';
         if ( !$errors ) {
             $bid = addBook( $_POST, $_FILES );
-            redirect( 'book.php', [ 'bid' => $bid ], [] );
+            dynamicRedirect( 'book.php', [ 'bid' => $bid ] );
         }
         else {
             require 'views/form_errors.php';
@@ -25,7 +25,7 @@
         //Make sure thatuser request at max 4 fields for author and at maxt 4 fields fot genres
         $authors = getAuthorsNum( $_GET );
         if ( $authors != $_GET[ 'authors' ] ) {
-            redirect( 'add_book.php', [ 'authors' => 1 ], [], 'force' );
+            standardRedirect( 'add_book.php', [ 'authors' => 1 ], [ 'red' ] );
         }
         $title = 'Προσθήκη Βιβλίου';
         require 'views/header.php';

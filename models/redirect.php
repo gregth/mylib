@@ -25,20 +25,22 @@
 
     }
 
-    //Redirects to a specified page depending on the value of $_GET[ 'ref' ]. If no $_GET[ redirects to $deafult path.
-    //Specidy an array with params to be appended at the end of the redirection url
-    //case = 'noref'
-    function redirect( $path, $params = [], $getParamsKeys = [], $case = 'noref' ) {
+    //Redirects to specified path, appending as get parameters the specified params and the getParameters of the previous url
+    function standardRedirect( $path, $params = [], $getParamsKeys = [] ) {
+        $path = createUrl( $path, $params, $getParamsKeys );
+        header( 'Location: ' . $path );
+        die();
+    }
+
+
+    //Redirects to a specified page depending on the value of $_GET[ 'ref' ]. If no $_GET[ redirects to $path.
+    //$path : Redirecton path, when no red isset
+    function dynamicRedirect( $path, $params = [], $getParamsKeys = [] ) {
 
         //If user has specified a custom path for redirection
-        if ( $case == 'force' ) {
-            $path = createUrl( $path, $params, $getParamsKeys );
-            header( 'Location: ' . $path );
-            die();
-        }
         //If ref is set at current page, you know where you should redirect
-        if ( isset( $_GET[ 'ref' ] )  ) {
-            switch ( $_GET[ 'ref' ] ) {
+        if ( isset( $_GET[ 'red' ] )  ) {
+            switch ( $_GET[ 'red' ] ) {
                 case 'add_book':
                     $getParamsKeys[] = 'authors';
                     $path = createUrl( 'add_book.php', $params, $getParamsKeys );

@@ -102,9 +102,3 @@ li.book-thumbnail {
 .book-preview {
 	clear:both;
 }
-
-li.comment {
-  display: block;
-  border-bottom: solid 1px rgb(194, 194, 194);
-  padding: 10px;
-}

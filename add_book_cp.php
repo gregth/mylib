@@ -1,35 +1,51 @@
 <?php
     require 'models/connect.php';
     require 'models/add_book_cp_functions.php';
-    require 'models/redirect_functions.php';
+    require 'models/show_book_functions.php';
+    require 'models/redirect.php';
 
     //Check if user has logged in. If not redirect him to login page
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
-        redirect( 'login.php', [ 'ref' => 'add_book_cp' ], [ 'bid' ], 'force' );
+        standardRedirect( 'login.php', [ 'red' => 'add_book_cp' ], [ 'bid' ] );
     }
 
-    //Check if is set he bid of the book, whose copy is beeing added. If not redirect him to search and sleect page
-    if ( isset( $_GET[ 'bid' ] ) ) {
-        //if description and image are set add the book copy to the database and redirect to user profile so he can see the list of his book copies (to be added)
-        if ( isset ( $_POST[ 'description' ] ) && !empty( $_FILES['userImage'] ) ) {
-            addBookCp($_GET, $_POST );
-            header("Location: profiler.php?uid=".$_SESSION[ 'userid' ] );
-            die();
+    //If no bid specified, redirect to booksearch page
+    if ( !isset( $_GET[ 'bid' ] ) ) {
+        standardRedirect( 'add_book_search.php' );
+    }
+
+    //If therre is no book with the specific bid
+    $book = getBookDetails( $_GET[ 'bid' ] );
+    if ( !$book ) {
+        standardRedirect( '404.php' );
+    }
+    $title = 'Δήλωση αντιτύπου για "' .$book[ 'title' ] . '"';
+
+    //Check if user is submitting a book copy
+    if ( !empty ( $_POST ) ) {
+        $res = validateBookCpData( $_POST, $_FILES );
+        if ( $res === true ) {
+            if ( $bid = addBookCp( $_GET, $_POST ) )  {
+                standardRedirect( 'book_cp.php', [ 'bcid' => $bcid ] );
+            }
+            else {
+                echo 'Προέκυψε σοβαρό σφάλμα κατά την εισαγωγή του βιβλίου. Παρακαλώ προσπαθήστε αργότερα. Error #BCOPY_INSERT_01';
+            }
+}
+        else {
+            $errors = $res;
+            require 'views/header.php';
+            require 'views/form_errors.php';
+            require 'views/book_copy_form.php';
+            require 'views/book.php';
+            require 'views/footer.php';
         }
+    }
+    else {
         //Show add copy form and append the book details
-        require 'models/show_book_functions.php';
-        $book = getBookDetails( $_GET[ 'bid' ] );
-        if ( !$book ) {
-            header( 'Location: 404.php' );
-            die();
-        }
-        $title = 'Δήλωση αντιτύπου για "' .$book[ 'title' ] . '"';
         require 'views/header.php';
         require 'views/book_copy_form.php';
         require 'views/book.php';
         require 'views/footer.php';
-    }
-    else {
-        header( 'Location: add_book_search.php' );
     }
 ?>
