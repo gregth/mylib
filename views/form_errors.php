@@ -1,5 +1,5 @@
 <div class="group" >
-    <div class="container" >
+    <div class="alert warning-alert container" >
         <?php
             if ( !empty( $errors ) ) {
         ?>

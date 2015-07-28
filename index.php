@@ -1,4 +1,5 @@
 <?php
+    $title = 'Αρχική Σελίδα';
     require 'models/connect.php';
     require 'views/header.php';
     require 'views/index_logged_out.php';
