@@ -1,4 +1,25 @@
 <?php
+
+//return an array with Bcopies that belong to the user specified from uid , on failure returns false
+    function getBcopiesByUid( $uid ) {
+        global $db ;
+        $sql_query = "Select bcid FROM users CROSS JOIN bcopies ON users.uid = bcopies.uid WHERE users.uid = ? ORDER BY time DESC";
+        $stmt = mysqli_prepare( $db, $sql_query );
+        mysqli_stmt_bind_param( $stmt, 'i', $uid );
+        mysqli_stmt_execute( $stmt );
+        mysqli_store_result( $stmt );
+        mysqli_stmt_bind_result($stmt, $bcid);
+        while(mysqli_stmt_fetch( $stmt ) ) {
+            $bids[] = $bid ;
+        }
+        if (!isset( $bids ) ) {
+            return false ;
+        }
+        return $bids ;
+    }
+
+
+
  //Returns false if bookcp not found, otherwise an array with bookcp details
     function getBookcpDetails( $bcid ) {
         global $db;
