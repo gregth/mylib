@@ -1,14 +1,17 @@
 <div>
-    Βιβλία χρήστη προς ανταλλαγή :
+    <h2>Βιβλία προς ανταλλαγή</h2>
     <ul>
-        <?php if ( !$bookCopies ) {
+        <?php
+            if ( !$bookCopies ) {
                 echo 'No books found';
-              }
-              else {
-                  foreach ($bookCopies as $value) {
+            }
+            else {
+                foreach ($bookCopies as $bookCopy ) {
         ?>
-        <li><a href = "<?php echo 'bookcp.php?bcid='.$value[ 'bcid' ];?>"><?php  echo $value[ 'title' ] ;?></a></li>
-        <?php     }
-              }       ?>
+        <li><a href="<?php echo 'bookcp.php?bcid=' . $bookCopy[ 'bcid' ];?>"><?php  echo $bookCopy[ 'title' ];?></a></li>
+        <?php
+                }
+            }
+        ?>
     </ul>
 </div>
