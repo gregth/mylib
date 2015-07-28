@@ -25,7 +25,7 @@ body li {
 }
 
 body { 
-    margin-top: 200px!important;
+    margin-top:60px!important;
 }
 
 #top-bar ul li {
@@ -101,4 +101,23 @@ li.book-thumbnail {
 
 .book-preview {
 	clear:both;
+}
+
+li.comment {
+  display: block;
+  border-bottom: solid 1px rgb(194, 194, 194);
+  padding: 10px;
+}
+
+#book-full .details {
+  padding-left: 30%;
+}
+
+#book-full img {
+  width: 25%;
+  height: auto;
+}
+
+.inline {
+	display:inline-block;
 }

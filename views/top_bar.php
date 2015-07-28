@@ -1,6 +1,6 @@
 <div id="top-bar" >
     <div class="wrapper container" >
-        <ul class="left" >
+        <ul class="inline left" >
             <li id="home" ><a href="index.php" >Αρχική</a></li>
             <li id="books" ><a href="book.php" >Βιβλία</a></li>
         </ul>
@@ -9,7 +9,7 @@
                 <input type ="text" name = "userQuery"  placeholder = "Αναζήτηση">
             </form>
         </div>
-        <ul class="right" >
+        <ul class="inline right" >
             <?php
                 if ( isset( $_SESSION[ 'userid' ] ) ) {
             ?>
