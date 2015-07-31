@@ -4,6 +4,7 @@
     require 'models/comment_functions.php';
     require 'models/redirect.php';
     require 'models/show_bookcp_functions.php';
+    require 'models/message_functions.php';
     // if note logged in , redirect to login page
     // better replace userid with profileid as a better fitting name
     if ( !isset( $_SESSION[ 'userid' ] ) ) {
@@ -18,6 +19,13 @@
     $title = 'Προφίλ ' . $data[ 'username' ];
     require 'views/header.php';
     require 'views/profile.php';
+    // notifaction for ne msg
+    if( $_GET[ 'uid' ] == $_SESSION[ 'userid' ] ) {
+        $newmsg = getNewMessages ( $_SESSION[ 'userid' ] );
+        if ($newmsg) {
+            require 'views/new_messages.php';
+        }
+    }
     $comments = getProfileComments( $_GET[ 'uid' ] );
     require 'views/profile_comments.php';
     $bookCopies = getBcopiesByUid ( $_GET[ 'uid' ] );
