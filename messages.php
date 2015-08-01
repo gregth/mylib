@@ -12,7 +12,6 @@
             header("Location: messages.php?discussant=".$_GET[ 'discussant' ] );
         }
         $messages = getUserMessages( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
-        var_dump($messages);
         require 'views/header.php';
         require 'views/messages.php';
         require 'views/footer.php';
