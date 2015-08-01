@@ -1,31 +1,32 @@
 <?php
 
-//return an array with bcopies that maatch the specified bid , on failure return false 
+//return an array with bcopies that maatch the specified bid , on failure return false
  function getBcopiesByBid( $bid ) {
         global $db ;
         $sql_query = "SELECT
-                         bcopies.bcid, users.uid , bcopies.timecreated, bcopies.sold, bcopies.description, bcopies.image 
-                    FROM 
-                        users CROSS 
-                    JOIN bcopies ON users.uid = bcopies.uid CROSS 
-                    JOIN books ON books.bid = bcopies.bid 
-                    WHERE bcopies.bid = ? 
+                         bcopies.bcid, users.uid, users.username, books.title, bcopies.timecreated, bcopies.sold, bcopies.description, bcopies.image
+                    FROM
+                        users CROSS
+                    JOIN bcopies ON users.uid = bcopies.uid CROSS
+                    JOIN books ON books.bid = bcopies.bid
+                    WHERE bcopies.bid = ?
                     ORDER BY timecreated DESC";
 
         $stmt = mysqli_prepare( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, 'i', $bid );
         mysqli_stmt_execute( $stmt );
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result($stmt, $bcid, $uid, $timecreated, $sold, $description, $image);
-        $i=0;
+        mysqli_stmt_bind_result($stmt, $bcid, $uid, $username, $title, $timecreated, $sold, $description, $image);
         while(mysqli_stmt_fetch( $stmt ) ) {
-            $books[ $i ][ 'bcid' ] = $bcid;
-            $books[ $i ][ 'uid' ] = $uid;
-            $books[ $i ][ 'timecreated' ] = $timecreated;
-            $books[ $i ][ 'sold' ] = $sold;
-            $books[ $i ][ 'description' ] = $description;
-            $books[ $i ][ 'image' ] = $image;
-            $i++;
+            $book[ 'bcid' ] = $bcid;
+            $book[ 'uid' ] = $uid;
+            $book[ 'username' ] = $username;
+            $book[ 'title' ] = $title;
+            $book[ 'timecreated' ] = $timecreated;
+            $book[ 'sold' ] = $sold;
+            $book[ 'description' ] = $description;
+            $book[ 'image' ] = $image;
+            $books[] = $book;
         }
         if (!isset( $books ) ) {
             return false ;
@@ -37,28 +38,29 @@
     function getBcopiesByUid( $uid ) {
         global $db ;
         $sql_query = "SELECT
-                         bcid, title, timecreated, sold, bcopies.description, image 
-                    FROM 
-                        users CROSS 
-                    JOIN bcopies ON users.uid = bcopies.uid CROSS 
-                    JOIN books ON books.bid = bcopies.bid 
-                    WHERE users.uid = ? 
+                        bcopies.bcid, users.uid, users.username, books.title, bcopies.timecreated, bcopies.sold, bcopies.description, bcopies.image
+                    FROM
+                        users CROSS
+                        JOIN bcopies ON users.uid = bcopies.uid CROSS
+                        JOIN books ON books.bid = bcopies.bid
+                    WHERE users.uid = ?
                     ORDER BY timecreated DESC";
 
         $stmt = mysqli_prepare( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, 'i', $uid );
         mysqli_stmt_execute( $stmt );
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result($stmt, $bcid, $title, $timecreated, $sold, $description, $image);
-        $i=0;
+        mysqli_stmt_bind_result($stmt, $bcid, $uid, $username, $title, $timecreated, $sold, $description, $image);
         while(mysqli_stmt_fetch( $stmt ) ) {
-            $books[ $i ][ 'bcid' ] = $bcid;
-            $books[ $i ][ 'title' ] = $title;
-            $books[ $i ][ 'timecreated' ] = $timecreated;
-            $books[ $i ][ 'sold' ] = $sold;
-            $books[ $i ][ 'description' ] = $description;
-            $books[ $i ][ 'image' ] = $image;
-            $i++;
+            $book[ 'bcid' ] = $bcid;
+            $book[ 'uid' ] = $uid;
+            $book[ 'username' ] = $username;
+            $book[ 'title' ] = $title;
+            $book[ 'timecreated' ] = $timecreated;
+            $book[ 'sold' ] = $sold;
+            $book[ 'description' ] = $description;
+            $book[ 'image' ] = $image;
+            $books[] = $book;
         }
         if (!isset( $books ) ) {
             return false ;

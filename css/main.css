@@ -128,3 +128,8 @@ div#footer {
   box-shadow: black 1px 1px 4px 1px;
   margin-top: 20px;
 }
+
+#bcopy-thumbnail {
+    width:100px;
+    height:auto;
+}

@@ -26,7 +26,7 @@
         $res = validateBookCpData( $_POST, $_FILES );
         if ( $res === true ) {
             if ( $bid = addBookCp( $_GET, $_POST ) )  {
-                standardRedirect( 'book_cp.php', [ 'bcid' => $bcid ] );
+                standardRedirect( 'bookcp.php', [ 'bcid' => $bcid ] );
             }
             else {
                 echo 'Προέκυψε σοβαρό σφάλμα κατά την εισαγωγή του βιβλίου. Παρακαλώ προσπαθήστε αργότερα. Error #BCOPY_INSERT_01';

@@ -25,5 +25,5 @@
     <input type = "text" name = "message" placeholder = "Πληκτρολογήστε εδώ το μήνυμα σας"/>
     <input type = "submit" value = "Αποστολή">
 </form>
-    
+
 </div>

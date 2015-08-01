@@ -29,7 +29,6 @@
     $comments = getProfileComments( $_GET[ 'uid' ] );
     require 'views/profile_comments.php';
     $bookCopies = getBcopiesByUid ( $_GET[ 'uid' ] );
-    var_dump( $bookCopies );
     require 'views/bookcp_list.php';
     require 'views/footer.php';
 ?>

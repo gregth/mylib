@@ -20,7 +20,7 @@
                 <li class="comment" >
                     <p id="comment-body"><?php echo $value[ 'comment' ]; ?></p>
                     <span>γράφτηκε από</span>
-                    <span id="author"><?php echo $value[ 'author' ]; ?></span>
+                    <span id="author"><a href="profiler.php?uid=<?php echo $value[ 'authorid' ]; ?>"><?php echo $value[ 'author' ]; ?></a></span>
                 </li>
             <?php
                     }
