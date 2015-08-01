@@ -45,26 +45,26 @@
         global $db;
         $sql_query = "SELECT  mid, message , username, seen, time, senterid 
             FROM messages CROSS 
-            JOIN users ON users.uid = messages.senterid 
-            WHERE (receiverid = ? AND senterid = ?) OR (senterid = ? AND receiverid = ?) ORDER BY time DESC" ;
+                JOIN users ON users.uid = messages.senterid 
+                WHERE (receiverid = ? AND senterid = ?) OR (senterid = ? AND receiverid = ?) ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, "iiii", $uid, $discussant, $uid, $discussant );
         mysqli_stmt_execute ( $stmt );
         mysqli_stmt_bind_result ( $stmt, $mid, $message, $senter, $seen, $time, $senterid );
         $i=0;
         while (mysqli_stmt_fetch( $stmt ) ) {
-            $array[ $i ][ 'mid' ] = $mid ;
-            $array[ $i ][ 'message' ] = $message ;
-            $array[ $i ][ 'senter' ] = $senter;
-            $array[ $i ][ 'seen' ] = $seen;
-            $array[ $i ][ 'time' ] = $time;
-            $array[ $i ][ 'senterid' ] = $senterid ;
-            $i++;
+            $book[ 'mid' ] = $mid ;
+            $book[ 'message' ] = $message ;
+            $book[ 'senter' ] = $senter;
+            $book[ 'seen' ] = $seen;
+            $book[ 'time' ] = $time;
+            $book[ 'senterid' ] = $senterid ;
+            $books[$mid] = $book ;
         }
-        if ( empty( $array ) ) {
+        if ( empty( $books ) ) {
             return false ;
         }
-        return $array ;
+        return $books ;
     }
 
 //updates the seen value to 1 when the message is seen by the receiver , on failure returns false on success returbs true
