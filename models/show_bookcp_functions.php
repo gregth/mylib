@@ -94,7 +94,7 @@
  //Returns false if bookcp not found, otherwise an array with bookcp details
     function getBookcpDetails( $bcid ) {
         global $db;
-        $sql_query = "SELECT `description`, `bid`, `image` FROM `bcopies` WHERE bcid = ?";
+        $sql_query = "SELET description, bid, image FROM bcopies WHERE bcid = ?";
         $stmt = mysqli_prepare( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, 'i', $bcid );
         mysqli_stmt_execute( $stmt );

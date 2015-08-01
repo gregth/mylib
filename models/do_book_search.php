@@ -4,7 +4,7 @@
     function bookSearch( $userQuery ) {
         $userQuery.="%";
         global $db;
-        $sqlQuery = "SELECT bid, title, description, coverimage FROM books WHERE title LIKE ? ORDER by `title` ASC";
+        $sqlQuery = "SELECT bid, title, description, coverimage FROM books WHERE title LIKE ? ORDER by title ASC";
         $stmt = mysqli_prepare( $db, $sqlQuery );
         mysqli_stmt_bind_param( $stmt ,'s', $userQuery);
         mysqli_execute( $stmt );

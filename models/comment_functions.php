@@ -4,7 +4,7 @@
     // returns true on succes false on failure
     function addBookComment($comment, $authorid, $bcid  ) {
         global $db ;
-        $sql_query = "INSERT INTO `bcopycomments` SET authorid = ? , comment = ? , bcid = ? ";
+        $sql_query = "INSERT INTO bcopycomments SET authorid = ? , comment = ? , bcid = ? ";
         $stmt = mysqli_prepare( $db , $sql_query);
         mysqli_stmt_bind_param($stmt, "isi", $authorid, $comment, $bcid ) ;
         mysqli_stmt_execute ( $stmt );
@@ -18,7 +18,7 @@
     // returns true on success or false on failure
     function addProfileComment($comment, $authorid, $profileid ) {
         global $db;
-        $sql_query = "INSERT INTO `profilecomments` SET authorid = ? , comment = ? , profileid = ? ";
+        $sql_query = "INSERT INTO profilecomments SET authorid = ? , comment = ? , profileid = ? ";
         $stmt = mysqli_prepare ( $db , $sql_query );
         mysqli_stmt_bind_param ( $stmt, 'isi', $authorid, $comment, $profileid );
         mysqli_stmt_execute( $stmt );
@@ -31,7 +31,7 @@
     //Gets the comments of a spefic book copy and returns them sorted by timestamp , on failure/nocomments returns false
     function getBcopyComments ( $bcid ) {
         global $db;
-        $sql_query = "SELECT `comment` , `username` FROM `bcopycomments` CROSS JOIN `users`ON bcopycomments.authorid = users.uid  WHERE bcid = ? ORDER BY time DESC" ;
+        $sql_query = "SELECT comment , username FROM bcopycomments CROSS JOIN users ON bcopycomments.authorid = users.uid  WHERE bcid = ? ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, 'i', $bcid );
         mysqli_stmt_execute ( $stmt );
@@ -50,7 +50,7 @@
     // Gets the comments of a specfic profile and returns them sorted by timestamp , on failure/no comments returns false
     function getProfileComments ( $profileid ) {
         global $db;
-        $sql_query = "SELECT `comment` ,users.uid, `username` FROM `profilecomments` CROSS JOIN `users` ON users.uid = profilecomments.authorid WHERE profileid = ? ORDER BY time DESC" ;
+        $sql_query = "SELECT comment, users.uid, username FROM profilecomments CROSS JOIN users ON users.uid = profilecomments.authorid WHERE profileid = ? ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, "i", $profileid );
         mysqli_stmt_execute ( $stmt );
