@@ -7,6 +7,11 @@
             <li>Όνοματεπώνυμο χρήστη : <?php echo $data[ 'firstname' ]." ". $data[ 'lastname' ];?> </li>
             <li>Διέυθυνση ηλεκτρονικού ταχυδρομείου : <?php echo $data[ 'email' ] ?></li>
             <?php
+                if ( $_GET[ 'uid' ] != $_SESSION [ 'userid' ] ) {
+                    echo '<li>';
+                    echo '<a href="messages.php?discussant='.$_GET[ 'uid' ].'">Προσωπικό μήνυμα </a>';
+                    echo '</li>';
+                }
                 if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                     echo '<li>';
                     echo '<a href="editprofile.php">Επεξεργασία Προφίλ</a>';
