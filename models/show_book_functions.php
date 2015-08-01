@@ -33,8 +33,6 @@
             $book[ 'authors' ][ $author ] = true;
             $book[ 'genres' ][ $genre ] = true;
             $books[ $id ] = $book;
-            static $i = 0;
-            $i++;
         }
         return $books;
     }
