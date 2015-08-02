@@ -4,6 +4,7 @@
     include 'models/show_bookcp_functions.php';
     include 'models/comment_functions.php';
     include 'models/connect.php';
+    require 'models/redirect.php';
     //if get bcid not set redirects to index
     if ( isset( $_GET[ 'bcid' ] ) ) {
         //if bcid does not exist redirects to 404 page
