@@ -121,3 +121,19 @@ li.comment {
 .inline {
 	display:inline-block;
 }
+
+div#footer {
+  height: 44px;
+  padding-top: 50px;
+  box-shadow: black 1px 1px 4px 1px;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+#bcopy-thumbnail {
+    width:100px;
+    height:auto;
+}

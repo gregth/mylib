@@ -25,7 +25,7 @@
     if ( !empty ( $_POST ) ) {
         $res = validateBookCpData( $_POST, $_FILES );
         if ( $res === true ) {
-            if ( $bid = addBookCp( $_GET, $_POST ) )  {
+            if ( $bcid = addBookCp( $_GET, $_POST ) )  {
                 standardRedirect( 'bookcp.php', [ 'bcid' => $bcid ] );
             }
             else {
