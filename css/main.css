@@ -15,7 +15,7 @@ body li {
 }
 
 #top-bar {
-  position: fixed;
+  position: fixed ;
   top: 0;
   left: 0;
   background-color: white;
@@ -135,4 +135,8 @@ div#footer {
 #bcopy-thumbnail {
     width:100px;
     height:auto;
+}
+
+#myModal {
+    position : absolute;
 }

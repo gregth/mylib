@@ -14,7 +14,7 @@
                 }
                 if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                     echo '<li>';
-                    require 'views/edit_profile.php';
+                    require 'views/edit_profile_button.php';
                     echo '</li>';
                 }
             ?>
