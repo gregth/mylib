@@ -14,7 +14,7 @@
                 }
                 if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                     echo '<li>';
-                    echo '<a href="editprofile.php">Επεξεργασία Προφίλ</a>';
+                    require 'views/edit_profile.php';
                     echo '</li>';
                 }
             ?>
