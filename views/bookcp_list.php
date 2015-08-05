@@ -38,7 +38,7 @@
         }
     ?></div>
         <tr class="center" >
-            <td colspan="5" class="center" ><a class="btn btn-primary full-width" role="button" href="add_book_cp.php?bid=<?php echo $_GET[ 'bid' ]; ?>" >Δήλωσε αντίτυπο του βιβλίου για ανταλλαγή</a></td>
+            <td colspan="5" class="center" ><a class="btn btn-primary full-width" role="button" href="<?php echo createUrl( 'add_book_cp.php', [], [ 'bid' ] ); ?>" >Δήλωσε αντίτυπο του βιβλίου για ανταλλαγή</a></td>
         </tr>
         </tbody>
         </table>

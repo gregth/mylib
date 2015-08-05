@@ -1,4 +1,25 @@
 <?php
+    //Returns owner of the book id if book exists,otherwise false
+    function validateBcopy( $bcid ) {
+        global $db ;
+        $sql_query = 'SELECT
+                uid
+            FROM
+                bcopies
+            WHERE bcopies.bcid = ?
+            ';
+        $stmt = mysqli_prepare( $db, $sql_query );
+        mysqli_stmt_bind_param( $stmt, 'i', $bcid );
+        mysqli_stmt_execute( $stmt );
+        mysqli_stmt_store_result( $stmt );
+        mysqli_stmt_bind_result($stmt, $uid );
+        if ( mysqli_stmt_fetch( $stmt ) ) {
+            return $uid;
+        }
+        else {
+            return false;
+        }
+    }
 
     //Return an array of the bcopies for a certain $bid, false on failure
     function getBcopies( $bid ) {

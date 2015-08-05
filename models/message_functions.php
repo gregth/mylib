@@ -3,8 +3,8 @@
     function getNewMessages ( $uid ) {
         global $db;
         $sql_query = "SELECT  senterid, username
-            FROM messages CROSS 
-            JOIN users ON users.uid = messages.senterid 
+            FROM messages CROSS
+            JOIN users ON users.uid = messages.senterid
             WHERE receiverid = ? AND seen = 0
             GROUP BY username" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
@@ -24,7 +24,7 @@
     }
 
 
-    
+
 
 //add a message to the message table keeps track of metadata , on succes returns true , on failure returns false
     function sendMessage( $message, $senterid, $receiverid  ) {
@@ -43,9 +43,9 @@
 //gets the messages exchanged by the two users and returns them in an array , on failure returns false
     function getUserMessages ( $uid, $discussant ) {
         global $db;
-        $sql_query = "SELECT  mid, message , username, seen, time, senterid 
-            FROM messages CROSS 
-                JOIN users ON users.uid = messages.senterid 
+        $sql_query = "SELECT  mid, message , username, seen, time, senterid
+            FROM messages CROSS
+                JOIN users ON users.uid = messages.senterid
                 WHERE (receiverid = ? AND senterid = ?) OR (senterid = ? AND receiverid = ?) ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, "iiii", $uid, $discussant, $uid, $discussant );
