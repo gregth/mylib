@@ -24,7 +24,7 @@
             ?>
         </ul>
         <form action="messages.php?addmsg=1&discussant=<?php echo $_GET[ 'discussant' ];?>" method="post" >
-            <textarea name = "message" >Πληκτρολογήστε εδώ το μήνυμα σας</textarea>
+            <textarea name = "message" placeholder="Πληκτρολογήστε εδώ το μήνυμα σας"></textarea>
             <input type = "submit" value = "Αποστολή">
         </form>
     </div>

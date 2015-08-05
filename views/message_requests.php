@@ -18,14 +18,14 @@
             ?></a></li><?php
         }
         ?></ul>
-        <h2>Τα βιβλία που σας ζήτησε</h2>
+        <h2>Τα βιβλία που ζητήσατε</h2>
         <ul class="list-group">
         <?php
         if ( empty( $requests[ 'from' ] ) ) {
-        ?></li>Δεν έχετε ζητήσει από το χρήστη κάποιο βιβλίο</li><?php
+        ?><li class="list-group-item">Δεν έχετε ζητήσει από το χρήστη κάποιο βιβλίο</li><?php
         }
         foreach ( $requests[ 'from' ] as $request ) {
-            ?><li>Ζητήσατε από το χρήστη <a href="profiler.php?uid=<?php
+            ?><li class="list-group-item">Ζητήσατε από το χρήστη <a href="profiler.php?uid=<?php
             echo $request[ 'uid' ];
             ?>"><?php
             echo $request[ 'username' ];
