@@ -7,7 +7,7 @@
         <div>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</div>
         <form action="<?php echo createUrl( 'add_book.php', [], [ 'red', 'authors' ] ) ?>" method="post" enctype="multipart/form-data">
             <input type="text" name="title" id="title" class="form-control input-lg" placeholder="Τίτλος Βιβλίου" />
-            <textarea name="description" id="description" class="form-control">Περίληψη Βιβλίου</textarea>
+            <textarea name="description" id="description" class="form-control" placeholder="Περίληψη Βιβλίου"></textarea>
               <span class="input-group-addon" id="basic-addon1">@</span>
                 <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
 

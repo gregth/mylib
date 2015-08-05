@@ -32,7 +32,7 @@
                 ?>
          </ul>
         <form action = "<?php echo createUrl( 'add_comment.php', [], [ 'bcid', 'uid' ] ); ?>" method = "post">
-            <textarea name = "comment">Γράψε τώρα το σχόλιό σου...</textarea>
+            <textarea name = "comment" placeholder="Γράψε τώρα το σχόλιό σου..."></textarea>
             <input type = "submit" value = "Προσθήκη">
         </form>
     </div>
