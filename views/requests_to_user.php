@@ -1,12 +1,13 @@
 <div class="group" >
     <div class="container" >
         <h1>Τα βιβλία που σας ζήτησαν</h1>
+        <ul class="list-group">
         <?php
         if ( empty( $requests ) ) {
-        ?></li>Κανένας χρήστης δε σας έχει ζητήσει κάποιο βιβλίο ακόμη</li><?php
+        ?><li class="list-group-item">Κανένας χρήστης δε σας έχει ζητήσει κάποιο βιβλίο ακόμη</li><?php
         }
         foreach ( $requests as $request ) {
-            ?><li>Ο χρήστης <a href="profile.php?uid=<?php
+            ?><li class="list-group-item">Ο χρήστης <a href="profile.php?uid=<?php
             echo $request[ 'uid' ];
             ?>" ><?php
             echo $request[ 'username' ];
