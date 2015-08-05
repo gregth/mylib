@@ -14,7 +14,6 @@
                 if ( isset( $_SESSION[ 'userid' ] ) ) {
             ?>
                     <li id="user" ><a href="profiler.php?uid=<?php echo $_SESSION[ 'userid' ] ?>" ><?php echo $_SESSION[ 'username' ] ?></a></li>
-                    <li><?php require "views/edit_profile_button.php";?></li>
                     <li><a href="logout.php">Αποσύνδεση</a></li>
             <?php
                 }
