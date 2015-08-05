@@ -3,7 +3,7 @@
         <h1>Αντύτυπο βιβλίου "<?php echo $bcopy[ 'title' ]; ?>"</h1>
         <h2>Πληροφορίες για το αντίτυπο</h2>
         <div class="card" >
-            <img src = "<?php echo $bcopy[ 'image' ]; ?>"/>
+            <img src = "<?php echo $bcopy[ 'image' ]; ?>" />
             <h3>Εικόνα αντιτύπου<h3>
         </div>
         <div class="details" >
@@ -19,3 +19,4 @@
         </form>
     </div>
 </div>
+
