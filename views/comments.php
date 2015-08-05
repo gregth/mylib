@@ -1,5 +1,5 @@
-<div class="group" id="comment-form" >
-    <div class="container" >
+<div class="group" id="comment-form">
+    <div class="container">
         <h2><?php
                 if ( $page == 'profile' ) {
                     ?>Σχόλια για το χρήστη<?php
@@ -20,7 +20,7 @@
                     else {
                         foreach ( $comments as $value ) {
                 ?>
-                    <li class="comment" >
+                    <li class="comment">
                         <p id="comment-body"><?php echo $value[ 'comment' ]; ?></p>
                         <span>γράφτηκε από</span>
                         <span id="author"><?php echo $value[ 'author' ]; ?></span>
@@ -32,7 +32,7 @@
                 ?>
          </ul>
         <form action = "<?php echo createUrl( 'add_comment.php', [], [ 'bcid', 'uid' ] ); ?>" method = "post">
-            <textarea name = "comment" >Γράψε τώρα το σχόλιό σου...</textarea>
+            <textarea name = "comment">Γράψε τώρα το σχόλιό σου...</textarea>
             <input type = "submit" value = "Προσθήκη">
         </form>
     </div>

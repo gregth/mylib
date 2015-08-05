@@ -1,17 +1,17 @@
-<div class="group" >
-    <div class="container" >
+<div class="group">
+    <div class="container">
         <h1>Διαθέσιμα Βιβλία<h1>
         <ul id="books">
         <?php
             foreach ( $books as $id => $book ) {
         ?>
-            <li class="book-preview" >
-                <div class="card" >
+            <li class="book-preview">
+                <div class="card">
                     <img src="<?php echo $book[ 'img' ]; ?>" />
                 </div>
-                <div class="details" >
+                <div class="details">
                     <h2><?php echo $book[ 'title' ]; ?></h2>
-                    <p class="description" ><?php echo $book[ 'description' ]; ?></p>
+                    <p class="description"><?php echo $book[ 'description' ]; ?></p>
                 <?php
                         if ( isset( $addBookMode ) ) {
                 ?>
