@@ -1,9 +1,9 @@
-<div class="group" >
-    <div class="alert warning-alert container" >
+<div class="group">
+    <div class="alert warning-alert container">
         <?php
             if ( !empty( $errors ) ) {
         ?>
-        <ul class="errors" >
+        <ul class="errors">
         <?php
                 foreach( $errors as $error ) {
         ?>

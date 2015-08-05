@@ -1,14 +1,14 @@
-<div class"group" id="book-full" >
-    <div class="container" >
+<div class"group" id="book-full">
+    <div class="container">
         <h1><?php echo $book[ 'title' ]; ?></h1>
-        <div class="inner-group" >
+        <div class="inner-group">
             <h2>Στοιχεία βιβλίου</h2>
             <img  class="card" src="<?php echo $book[ 'image' ]; ?>" />
-            <div class="details" >
+            <div class="details">
             <h3>Περίληψη Βιβλίου</h3>
             <p ><?php echo $book[ 'description' ]; ?></p>
             <h3>Συγγραφείς</h3>
-            <ul id="authors" >
+            <ul id="authors">
             <?php
                 foreach ( $book[ 'authors' ] as $author => $bool ) {
             ?>
@@ -18,7 +18,7 @@
             ?>
             </ul>
             <h3>Κατηγορίες</h3>
-            <ul id="genres" >
+            <ul id="genres">
             <?php
                 foreach ( $book[ 'genres' ] as $genre => $bool ) {
             ?>
