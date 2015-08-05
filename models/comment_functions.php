@@ -31,15 +31,16 @@
     //Gets the comments of a spefic book copy and returns them sorted by timestamp , on failure/nocomments returns false
     function getBcopyComments ( $bcid ) {
         global $db;
-        $sql_query = "SELECT comment , username FROM bcopycomments CROSS JOIN users ON bcopycomments.authorid = users.uid  WHERE bcid = ? ORDER BY time DESC" ;
+        $sql_query = "SELECT comment , username, UNIX_TIMESTAMP( time ) FROM bcopycomments CROSS JOIN users ON bcopycomments.authorid = users.uid  WHERE bcid = ? ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, 'i', $bcid );
         mysqli_stmt_execute ( $stmt );
-        mysqli_stmt_bind_result ( $stmt, $comment, $author );
+        mysqli_stmt_bind_result ( $stmt, $comment, $author, $time );
         $i=0;
         while (mysqli_stmt_fetch( $stmt ) ) {
             $array[$i]['comment'] = $comment ;
             $array[$i]['author'] = $author;
+            $array[$i][ 'time' ] = $time;
             $i++;
         }
         if ( empty( $array ) ) {
@@ -50,16 +51,17 @@
     // Gets the comments of a specfic profile and returns them sorted by timestamp , on failure/no comments returns false
     function getProfileComments ( $profileid ) {
         global $db;
-        $sql_query = "SELECT comment, users.uid, username FROM profilecomments CROSS JOIN users ON users.uid = profilecomments.authorid WHERE profileid = ? ORDER BY time DESC" ;
+        $sql_query = "SELECT comment, users.uid, username, UNIX_TIMESTAMP( time ) FROM profilecomments CROSS JOIN users ON users.uid = profilecomments.authorid WHERE profileid = ? ORDER BY time DESC" ;
         $stmt = mysqli_prepare ( $db, $sql_query );
         mysqli_stmt_bind_param( $stmt, "i", $profileid );
         mysqli_stmt_execute ( $stmt );
-        mysqli_stmt_bind_result ( $stmt, $comment, $authorid, $author );
+        mysqli_stmt_bind_result ( $stmt, $comment, $authorid, $author, $time );
         $i=0;
         while (mysqli_stmt_fetch( $stmt ) ) {
             $array[$i]['comment'] = $comment ;
             $array[$i]['author'] = $author;
             $array[ $i ][ 'authorid' ] = $authorid;
+            $array[$i][ 'time' ] = $time;
             $i++;
         }
         if ( empty( $array ) ) {
