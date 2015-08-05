@@ -139,4 +139,42 @@
         }
         return $requests;
     }
+
+    function getRequestsFromUserAToB( $uidA,$uidB ) {
+        global $db;
+        $query =
+            'SELECT
+                requests.uid,
+                UNIX_TIMESTAMP( requests.time ),
+                users.username,
+                requests.bcid,
+                books.title
+            FROM
+               requests CROSS
+               JOIN bcopies ON requests.bcid = bcopies.bcid CROSS
+               JOIN users ON users.uid = requests.uid CROSS
+               JOIN books ON books.bid = bcopies.bid
+            WHERE
+                requests.uid = ? AND
+                bcopies.uid = ?
+            ORDER BY
+                requests.time DESC
+            ';
+        $stmt = mysqli_prepare( $db, $query );
+        mysqli_stmt_bind_param( $stmt, 'ii', $uidA, $uidB );
+        mysqli_stmt_execute( $stmt );
+        mysqli_stmt_store_result( $stmt );
+        mysqli_stmt_bind_result( $stmt, $uid, $time, $username, $bcid, $title );
+        $requests = [];
+        while ( mysqli_stmt_fetch( $stmt ) ) {
+            $req[ 'username' ] = $username;
+            $req[ 'uid' ] = $uid;
+            $req[ 'bcid' ] = $bcid;
+            $req[ 'time' ] = $time;
+            $req[ 'bcid' ] = $bcid;
+            $req[ 'title' ] = $title;
+            $requests[] = $req;
+        }
+        return $requests;
+    }
 ?>

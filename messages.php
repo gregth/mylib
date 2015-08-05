@@ -1,6 +1,8 @@
 <?php
     require 'models/connect.php';
     require 'models/message_functions.php';
+    require 'models/message_requests.php';
+    require 'models/transactions.php';
 
     if (!isset( $_SESSION[ 'userid' ] ) ) {
         header("Location: index.php");
@@ -14,6 +16,9 @@
         $messages = getUserMessages( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
         require 'views/header.php';
         require 'views/messages.php';
+        $requests[ 'to' ] = getRequestsFromUserAToB( $_GET[ 'discussant' ], $_SESSION[ 'userid' ]  );
+        $requests[ 'from' ] = getRequestsFromUserAToB( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
+        require 'views/message_requests.php';
         require 'views/footer.php';
         //after rendering the page mark every message as seen
         if ( $messages ) {
@@ -25,6 +30,6 @@
         }
     }
     else {
-        //redirect ekei pou briskotane 
+        //redirect ekei pou briskotane
     }
 ?>

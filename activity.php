@@ -6,6 +6,7 @@
     if( !isset( $_SESSION[ 'userid' ] ) )
         standardRedirect( 'login.php', [ 'red' => 'activity' ] );
 
+    $title = 'Δραστηριότητα';
     require 'views/header.php';
     $requests = getRequestsToUser( $_SESSION[ 'userid' ] );
     require 'views/requests_to_user.php';
