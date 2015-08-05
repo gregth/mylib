@@ -140,3 +140,11 @@ div#footer {
 #myModal {
     position : absolute;
 }
+
+td.center {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
