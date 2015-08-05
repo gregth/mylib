@@ -53,6 +53,13 @@
                     array_push( $getParamsKeys, 'uid' );
                     $path = createUrl( 'profiler.php', $params, $getParamsKeys );
                     break;
+                case 'request':
+                    $getParamsKeys[] = 'bcid';
+                    $path = createUrl( 'request.php', $params, $getParamsKeys );
+                    break;
+                case 'activity':
+                    $path = createUrl( 'activity.php', $params, $getParamsKeys );
+                    break;
                 default:
                     $path = createUrl( $path, $params, $getParamsKeys );
             }
