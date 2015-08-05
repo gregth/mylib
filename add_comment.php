@@ -20,7 +20,7 @@
     }
     
     if (isset ( $_GET[ 'bcid' ] ) ) {
-        if(!empty($_POST[ 'comment' ] && getBookcpDetails($_GET[ 'bcid' ] ) ) ) {
+        if(!empty($_POST[ 'comment' ] && getBcopyDetails($_GET[ 'bcid' ] ) ) ) {
             $success = addBookComment($_POST[ 'comment' ], $_SESSION[ 'userid' ], $_GET[ 'bcid' ] );
             //redirects back to bcopy page
             header("Location: bookcp.php"."?bcid=".$_GET[ 'bcid' ] );
