@@ -1,6 +1,6 @@
 <?php
     require 'models/connect.php';
-    require 'models/book_add_functions.php';
+    require 'models/book_add.php';
     require 'models/genres_functions.php';
     require 'models/redirect.php';
     if ( !isset( $_SESSION[ 'userid' ] )  ){

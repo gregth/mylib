@@ -1,6 +1,6 @@
 <?php
     require 'models/connect.php';
-    require 'models/add_book_cp_functions.php';
+    require 'models/add_book_cp.php';
     require 'models/show_book_functions.php';
     require 'models/redirect.php';
 
