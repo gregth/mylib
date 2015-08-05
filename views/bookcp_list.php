@@ -23,7 +23,8 @@
                 <td><a href="<?php echo 'bookcp.php?bcid=' . $bookCopy[ 'bcid' ];?>"><?php  echo $bookCopy[ 'title' ];?></a></td>
                 <td><a href="profiler.php?uid=<?php echo $bookCopy[ 'owner' ][ 'uid' ]; ?>"><?php echo $bookCopy[ 'owner' ][ 'username' ]; ?></a></td>
                 <td><?php echo formatDate( $bookCopy[ 'timeCreated' ] ); ?></td>
-                <td><img id="bcopy-thumbnail" src="<?php echo $bookCopy[ 'image' ]; ?>"/></td>
+                <td><img id="bcopy-thumbnail" src="<?php echo $bookCopy[ 'image' ]; ?> "
+                        data-toggle="popover" data-trigger="hover" title="Περιγραφή Χρήστη" data-poload="popover.php" data-content="<?php echo $bookCopy['description'];?>"/></td>
                 <td><?php
                     if( $bookCopy[ 'given' ] ) {
                         ?>Δόθηκε στον/στην <a href="profiler.php?uid=<?php echo $bookCopy[ 'receiver' ][ 'uid' ]; ?>" ><?php echo $bookCopy[ 'receiver' ][ 'username' ]; ?></a>.<?php
@@ -42,3 +43,4 @@
         </tbody>
         </table>
 </div>
+<script src="js/popover.js"></script>
