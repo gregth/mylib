@@ -3,6 +3,7 @@
     require 'models/connect.php';
     require 'models/show_bookcp_functions.php';
     require 'models/date.php';
+    require 'models/redirect.php';
     if ( isset( $_GET[ 'bid' ] ) ) {
         if ( $book = getBookDetails( $_GET[ 'bid' ] ) ) {
             $title = $book[ 'title' ];
