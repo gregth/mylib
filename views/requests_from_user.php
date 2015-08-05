@@ -6,7 +6,7 @@
         ?></li>Δεν έχετε ζητήσει κάποιο βιβλίο ακόμη</li><?php
         }
         foreach ( $requests as $request ) {
-            ?><li>Ζήτησε από το χρήστη <a href="profile.php?uid=<?php
+            ?><li>Ζητήσατε από το χρήστη <a href="profile.php?uid=<?php
             echo $request[ 'owner' ][ 'uid' ];
             ?>" ><?php
             echo $request[ 'owner' ][ 'username' ];
