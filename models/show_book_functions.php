@@ -1,5 +1,5 @@
 <?php
-    //Returns an array with all books, containing their title, image, descriptiom
+    //Returns an array with all available books, containing their title, image, descriptiom
     function getAllBooks( ) {
         global $db;
         $stmt = mysqli_prepare(
@@ -18,11 +18,11 @@
                 JOIN bookauthors ON bookauthors.bid = books.bid CROSS
                 JOIN bcopies ON bcopies.bid = books.bid
             WHERE
-                bcopies.sold = 0
+                bcopies.deleted = 0 AND
+                bcopies.given = 0
             ORDER BY
                 books.title ASC
-            '
-        );
+        ');
         mysqli_stmt_execute( $stmt );
         mysqli_stmt_store_result( $stmt );
         mysqli_stmt_bind_result( $stmt,$id, $title, $description, $author, $genre, $image );
@@ -75,5 +75,4 @@
             return false;
         return $book;
     }
-
 ?>

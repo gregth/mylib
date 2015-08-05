@@ -1,43 +1,42 @@
 <div class="group" >
     <div class="container" >
-        <h2>Βιβλία προς ανταλλαγή</h2>
-        <ul>
-            <?php
-                if ( !$bookCopies ) {
-            ?>
-                    <li>Κανένα βιβλίο προς ανταλλαγή</li>
-            <?php
-                }
-                else {
-            ?>
-                    <table class="table table-striped" >
-                        <thead>
-                            <tr>
-                                <td>Τίτλος</td>
-                                <td>Χρήστης που το διαθέτει</td>
-                                <td>Ημερομηνία Καταχώρυσης</td>
-                                <td>Εικονα αντιτύπου</td>
-                            </tr>
-                        </thead>
-                        </tbody>
-            <?php
-                    foreach ($bookCopies as $bookCopy ) {
-            ?>
-            <tr>
+        <h2>Αντίτυπα προς ανταλλαγή</h2>
+        <table class="table table-striped" >
+            <thead>
+                <tr>
+                    <td>Τίτλος</td>
+                    <td>Χρήστης που το διαθέτει</td>
+                    <td>Ημερομηνία Καταχώρυσης</td>
+                    <td>Εικονα αντιτύπου</td>
+                    <td>Πληροφορίες</td>
+                </tr>
+            </thead>
+            <tbody><?php
+            if ( !$bookCopies ) {
+                ?><tr>
+                    <td colspan="5" >Κανένα αντίτυπο διαθέσιμο για ανταλλαγή</td>
+                </tr><?php
+            }
+            else {
+                foreach ($bookCopies as $bookCopy ) {
+            ?><tr>
                 <td><a href="<?php echo 'bookcp.php?bcid=' . $bookCopy[ 'bcid' ];?>"><?php  echo $bookCopy[ 'title' ];?></a></td>
-                <td><a href="profiler.php?uid=<?php echo $bookCopy[ 'uid' ]; ?>"><?php echo $bookCopy[ 'username' ]; ?></a></td>
-                <td><?php echo $bookCopy[ 'timecreated' ] ?></td>
+                <td><a href="profiler.php?uid=<?php echo $bookCopy[ 'owner' ][ 'uid' ]; ?>"><?php echo $bookCopy[ 'owner' ][ 'username' ]; ?></a></td>
+                <td><?php echo formatDate( $bookCopy[ 'timeCreated' ] ); ?></td>
                 <td><img id="bcopy-thumbnail" src="<?php echo $bookCopy[ 'image' ]; ?>"/></td>
-            <tr>
-            <?php
+                <td><?php
+                    if( $bookCopy[ 'given' ] ) {
+                        ?>Δόθηκε στον/στην <a href="profiler.php?uid=<?php echo $bookCopy[ 'receiver' ][ 'uid' ]; ?>" ><?php echo $bookCopy[ 'receiver' ][ 'username' ]; ?></a>.<?php
                     }
-            ?>
-                        </tbody>
-                    </table>
-                    <div><a href="add_book_cp.php?bid=<?php echo $_GET[ 'bid' ]; ?>" >Δήλωσε αντίτυπο του βιβλίου για ανταλλαγή</a></div>
-            <?php
+                    else {
+                        ?><a href="request.php?bcid=<?php echo $bookCopy[ 'bcid' ]; ?>" >Το θέλω!</a><?php
+                    }
+                ?></td>
+            </tr><?php
                 }
-            ?>
-        </ul>
-    </div>
+        }
+    ?></div>
+        </tbody>
+        </table>
+    <div><a href="add_book_cp.php?bid=<?php echo $_GET[ 'bid' ]; ?>" >Δήλωσε αντίτυπο του βιβλίου για ανταλλαγή</a></div>
 </div>

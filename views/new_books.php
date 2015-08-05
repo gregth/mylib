@@ -7,7 +7,7 @@
             ?>
                     <li class="book-thumbnail" >
                         <a href="book.php?bid=<?php echo $book[ 'bid' ] ?>" >
-                            <img src="<?php echo $book[ 'img' ] ?>" class="book-tumbnail" />
+                            <img src="<?php echo $book[ 'image' ] ?>" class="book-tumbnail" />
                             <h3><?php echo $book [ 'title' ] ?></h3>
                         </a>
                     </li>
