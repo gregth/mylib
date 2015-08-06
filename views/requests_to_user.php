@@ -15,7 +15,7 @@
             echo $request[ 'bcid' ];
             ?>" ><?php
             echo $request[ 'title' ];
-            ?></a><a class="btn btn-default" role="button" href="messages.php?discussant=<?php
+            ?></a><a class="btn btn-primary btn-sm right" role="button" href="messages.php?discussant=<?php
             echo $request[ 'uid' ];
             ?>" >Επικοινωνία & Αποστολή Βιβλίου</a>
             </li><?php

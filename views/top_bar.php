@@ -14,6 +14,7 @@
                 if ( isset( $_SESSION[ 'userid' ] ) ) {
             ?>
                     <li id="user" ><a href="profiler.php?uid=<?php echo $_SESSION[ 'userid' ] ?>" ><?php echo $_SESSION[ 'username' ] ?></a></li>
+                    <li ><a href="activity.php">Δραστηριότητα</a></li>
                     <li><a href="logout.php">Αποσύνδεση</a></li>
             <?php
                 }
