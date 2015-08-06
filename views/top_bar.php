@@ -32,7 +32,7 @@
             }
             else {
                 ?><div class="btn-group">
-                    <button type="button" class="btn btn-danger" href="login.php" >Σύνδεση</button>
+                    <a type="button" class="btn btn-danger" href="login.php" >Σύνδεση</a>
                     <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
