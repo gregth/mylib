@@ -1,8 +1,8 @@
 <?php
-    //Retur fail if it fails registering the user, otherwise returns the user id
     require 'image_upload.php';
-    function  register_user($data)
-    {
+
+    //Returns fail if it fails registering the user, otherwise returns the user id
+    function  register_user( $data ) {
         global $db;
         $username = $data['username'];
         $first_name = $data['first_name'];
@@ -11,10 +11,13 @@
         $path = imageUpload( 'data/profile_imgs/', 'profileimg' );
         $hash = hash_fun($data['password']); //hash with salt at the end
         list($passhash,$salt) = explode("^",$hash);
+        echo "TI";
         $stmt = mysqli_prepare($db,
             "INSERT INTO users SET username = ? , password = ? , salt = ? , firstname = ? , lastname = ? , email = ?, profileimg = ? ");
         mysqli_stmt_bind_param($stmt,"sssssss",$username,$passhash,$salt,$first_name,$last_name,$email, $path );
         mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result( $stmt );
+        var_dump( $stmt );
         if ( mysqli_affected_rows($db) != 1 ) {
             return false;
         }
