@@ -28,11 +28,6 @@ Licensed under MIT
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="nav">
-                    <li class="active">
-                        <a href="#">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Γενικά στοιχεία</a>
-                    </li>
                     <?php
                         if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                     ?>
@@ -44,17 +39,29 @@ Licensed under MIT
                     <?php
                         }
                     ?>
+                    <li class="active">
+                        <a href="#bcopies" target="_blank" data-toggle="tab">
+                            <i class="glyphicon glyphicon-book"></i>
+                            Βιβλία
+                        </a>
+                    </li>
                     <li>
-                        <a href="#" target="_blank">
-                        <i class="glyphicon glyphicon-ok"></i>
-                        Ρυθμίσεις</a>
+                        <a href="#comments" target="_blank" data-toggle="tab">
+                            <i class="glyphicon glyphicon-comment"></i>
+                            Σχόλια
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#info" target="_blank" data-toggle="tab">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Γενικά στοιχεία</a>
                     </li>
                 </ul>
             </div>
             <!-- END MENU -->
         </div>
     </div>
-    <div class="col-md-9" >
-    <?php require 'bookcp_list.php';?>
-    </div>
+    <div class="col-md-9" ><?php
+        require 'tabbed_profile.php';
+    ?></div>
 </div>
