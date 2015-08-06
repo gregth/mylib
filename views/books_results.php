@@ -1,11 +1,11 @@
 <div class="group">
     <div class="container">
         <h1>Διαθέσιμα Βιβλία<h1>
-        <ul id="books">
+        <ul class="list-group" id="books">
         <?php
             foreach ( $books as $id => $book ) {
         ?>
-            <li class="book-preview">
+            <li class="list-group-item book-preview">
                 <div class="card">
                     <img src="<?php echo $book[ 'img' ]; ?>" />
                 </div>
