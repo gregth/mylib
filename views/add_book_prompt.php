@@ -1,4 +1,4 @@
-<div class="group">
+<div class="">
     <?php
         if ( $books ) {
     ?>
@@ -12,5 +12,5 @@
         <a href="add_book.php?red=add_book_cp">Προσθήκη στοιχείων νέου βιβλίου</a>
     <?php
         }
-    ?>
+    ?>Ω
 </div>
