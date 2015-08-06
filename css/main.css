@@ -83,8 +83,13 @@ li.#user-menu {
 .card {
 	float:left;
  margin: 10px 20px 20px 0;
+ width: 30%;
 }
 
+.card img {
+    width: 100%;
+    height: auto;
+}
 
 li.comment {
   display: block;
@@ -97,8 +102,6 @@ li.comment {
 }
 
 #book-full img {
-  width: 25%;
-  height: auto;
 }
 
 .inline {
@@ -170,4 +173,9 @@ a.btn, button.dropdown-toggle {
 .navbar-right > div {
   float: left;
   margin: 8px 5px;
+}
+
+#book .row {
+    margin-left:0;
+    text-align: justify;
 }

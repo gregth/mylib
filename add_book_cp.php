@@ -20,7 +20,7 @@
         standardRedirect( '404.php' );
     }
     $title = 'Δήλωση αντιτύπου για "' .$book[ 'title' ] . '"';
-    $showTitle = false;
+    $showHeading = false;
     //Check if user is submitting a book copy
     if ( !empty ( $_POST ) ) {
         $res = validateBookCpData( $_POST, $_FILES );

@@ -1,35 +1,39 @@
 <?php
-    if ( $showTitle ) {
+    if ( $showHeading ) {
 ?>
 <h1 ><?php echo $book[ 'title' ]; ?></h1>
 <?php
     }
 ?>
-<div class="group panel panel-default" id="book-full">
+<div id="book" class="group panel panel-default">
     <h2 class="panel-heading">Στοιχεία βιβλίου</h2>
     <div class="inner-group panel-body">
-        <div class="card">
-            <img src="<?php echo $book[ 'image' ]; ?>" />
+        <div class="row">
+            <div class="card col-md-4">
+                <img src="<?php echo $book[ 'image' ]; ?>" />
+            </div>
+            <div class="details col-md-8">
+                <h3>Περίληψη Βιβλίου</h3>
+                <p ><?php echo $book[ 'description' ]; ?></p>
+            </div>
         </div>
-        <div class="details">
-            <h3>Περίληψη Βιβλίου</h3>
-            <p ><?php echo $book[ 'description' ]; ?></p>
+        <div class="row">
             <h3>Συγγραφείς</h3>
-            <ul id="authors">
+            <ul class="list-group genres">
             <?php
                 foreach ( $book[ 'authors' ] as $author => $bool ) {
             ?>
-                    <li><?php echo $author; ?></li>
+                    <li class="list-group-item"><?php echo $author; ?></li>
             <?php
                 }
             ?>
             </ul>
             <h3>Κατηγορίες</h3>
-            <ul id="genres">
+            <ul class="list-group genres">
             <?php
                 foreach ( $book[ 'genres' ] as $genre => $bool ) {
             ?>
-                    <li><?php echo $genre; ?></li>
+                    <li class="list-group-item"><?php echo $genre; ?></li>
             <?php
                 }
             ?>
