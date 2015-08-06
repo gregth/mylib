@@ -18,7 +18,7 @@
             if ( isset( $_SESSION[ 'userid' ] ) ) {
                 ?>
                 <div>
-                    <button class="bar-btn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php
+                    <button class="bar-btn btn btn-success dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php
                         echo $_SESSION[ 'username' ];
                         ?><span class="caret"> </span>
                     </button>
@@ -36,8 +36,8 @@
             }
             else {
                 ?><div class="btn-group">
-                    <a type="button" class="btn btn-danger" href="login.php" >Σύνδεση</a>
-                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a type="button" class="btn btn-success" href="login.php" >Σύνδεση</a>
+                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="caret"></span>
                         <span class="sr-only">Toggle Dropdown</span>
                     </button>
