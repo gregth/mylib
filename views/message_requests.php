@@ -2,7 +2,7 @@
     <h2 class="panel-heading">Τα βιβλία που σας ζήτησε</h2>
     <ul class="list-group"><?php
         if ( empty( $requests[ 'to' ] ) ) {
-            ?></li>Δε σας έχει ζητήσει κάποιο βιβλίο ακόμη</li><?php
+            ?><li class="list-group-item">Δε σας έχει ζητήσει κάποιο βιβλίο ακόμη</li><?php
         }
         foreach ( $requests[ 'to' ] as $request ) {
             ?><li class="list-group-item">Ο χρήστης <a href="profiler.php?uid=<?php

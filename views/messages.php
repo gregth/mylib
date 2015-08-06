@@ -6,7 +6,7 @@
         </div>
         <ul class="list-group"><?php
             if ( empty($messages ) ) {
-                ?><li>Δεν υπάρχει κανένα μήνυμα μέχρι στιγμής.</li><?php
+                ?><li class="list-group-item">Δεν υπάρχει κανένα μήνυμα μέχρι στιγμής.</li><?php
             }
             else {
                 foreach ( $messages as $message ) {
