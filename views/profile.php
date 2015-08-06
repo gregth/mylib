@@ -31,15 +31,15 @@ Licensed under MIT
                     <li class="active">
                         <a href="#">
                         <i class="glyphicon glyphicon-home"></i>
-                        Overview </a>
+                        Γενικά στοιχεία</a>
                     </li>
                     <?php
                         if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                     ?>
                     <li>
-                        <a href="editprofile.php?" data-toggle="modal" data-target="#MyModal" >
+                        <a href="editprofile.php" data-toggle="modal" data-target="#MyModal" >
                         <i class="glyphicon glyphicon-user"></i>
-                        Account Settings </a>
+                        Επεξεργασία Προφίλ</a>
                     </li>
                     <?php
                         }
@@ -47,12 +47,7 @@ Licensed under MIT
                     <li>
                         <a href="#" target="_blank">
                         <i class="glyphicon glyphicon-ok"></i>
-                        Tasks </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                        <i class="glyphicon glyphicon-flag"></i>
-                        Help </a>
+                        Ρυθμίσεις</a>
                     </li>
                 </ul>
             </div>

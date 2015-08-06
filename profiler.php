@@ -21,16 +21,8 @@
     $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
     require 'views/header.php';
     require 'views/profile.php';
-    // notifaction for ne msg
-    if( $_GET[ 'uid' ] == $_SESSION[ 'userid' ] ) {
-        $newmsg = getNewMessages ( $_SESSION[ 'userid' ] );
-        if ($newmsg) {
-            require 'views/new_messages.php';
-        }
-    }
     $comments = getProfileComments( $_GET[ 'uid' ] );
     $page = 'profile';
     require 'views/comments.php';
-    require 'views/bookcp_list.php';
     require 'views/footer.php';
 ?>
