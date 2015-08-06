@@ -1,5 +1,5 @@
-<div class="group">
-    <h2>Αντίτυπα προς ανταλλαγή</h2>
+<div class="panel panel-default">
+    <h2 class="panel-heading">Αντίτυπα προς ανταλλαγή</h2>
     <table class="table table-striped">
         <thead>
             <tr>

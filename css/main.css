@@ -88,20 +88,11 @@ li.book-thumbnail {
   height: 200px;
 }
 
-.book-preview {
-  display: block;
-  padding: 20px 0;
-	min-height:250px;
-}
-
 .card {
 	float:left;
  margin: 10px 20px 20px 0;
 }
 
-.book-preview {
-	clear:both;
-}
 
 li.comment {
   display: block;
@@ -151,4 +142,8 @@ td.center {
 
 .right {
     float: right;
+}
+
+h2.panel-heading {
+	margin-top: 0;
 }

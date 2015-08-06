@@ -1,11 +1,11 @@
-<div class="group" >
-    <h1>Τα βιβλία που σας ζητήσατε</h1>
+<div class="group panel panel-default" >
+    <h2 class="panel-heading">Τα βιβλία που ζητήσατε</h2>
     <ul class="list-group">
     <?php
-    if ( empty( $requests ) ) {
+    if ( empty( $requests[ 'from' ] ) ) {
     ?><li class="list-group-item" >Δεν έχετε ζητήσει κάποιο βιβλίο ακόμη</li><?php
     }
-    foreach ( $requests as $request ) {
+    foreach ( $requests[ 'from' ] as $request ) {
         ?><li class="list-group-item">Ζητήσατε από το χρήστη <a href="profile.php?uid=<?php
         echo $request[ 'owner' ][ 'uid' ];
         ?>" ><?php

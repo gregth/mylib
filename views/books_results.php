@@ -1,5 +1,5 @@
-<div class="group">
-    <h1>Διαθέσιμα Βιβλία<h1>
+<div class="group panel panel-default">
+    <h2 class="panel-heading">Διαθέσιμα Βιβλία</h2>
     <ul class="list-group" id="books">
     <?php
         foreach ( $books as $id => $book ) {

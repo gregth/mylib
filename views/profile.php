@@ -3,7 +3,7 @@ Licensed under MIT
 -->
 <div class="row profile">
     <div class="col-md-3">
-        <div class="profile-sidebar">
+        <div class="panel panel-default profile-sidebar">
             <!-- SIDEBAR USERPIC -->
             <div class="profile-userpic">
             <img src="<?php echo $data[ 'img' ]; ?>" class="img-responsive" alt="Εικόνα Χρήστη" />
@@ -59,5 +59,7 @@ Licensed under MIT
             <!-- END MENU -->
         </div>
     </div>
-    <div class="col-md-9">
-        <div class="profile-content">
+    <div class="col-md-9" >
+    <?php require 'bookcp_list.php';?>
+    </div>
+</div>

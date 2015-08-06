@@ -18,6 +18,7 @@
         die();
     }
     $title = 'Προφίλ ' . $data[ 'username' ];
+    $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
     require 'views/header.php';
     require 'views/profile.php';
     // notifaction for ne msg
@@ -30,7 +31,6 @@
     $comments = getProfileComments( $_GET[ 'uid' ] );
     $page = 'profile';
     require 'views/comments.php';
-    $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
     require 'views/bookcp_list.php';
     require 'views/footer.php';
 ?>
