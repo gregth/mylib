@@ -1,6 +1,6 @@
-<div class="group" id="comment-form">
-    <div class="container">
-        <h2><?php
+<div class="container">
+    <div class="panel panel-default">
+        <h2 class="panel-heading"><?php
                 if ( $page == 'profile' ) {
                     ?>Σχόλια για το χρήστη<?php
                 }
@@ -10,6 +10,7 @@
                     }
                 ?>
             </h2>
+        <div class="panel-body">
          <ul>
                 <?php
                      if ( empty($comments ) ) {
@@ -35,5 +36,6 @@
             <textarea name = "comment" placeholder="Γράψε τώρα το σχόλιό σου..."></textarea>
             <input type = "submit" value = "Προσθήκη">
         </form>
+        </div>
     </div>
 </div>

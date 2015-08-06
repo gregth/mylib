@@ -1,5 +1,4 @@
 <div class="group">
-    <div class="container">
     <?php
         if ( $books ) {
     ?>
@@ -14,5 +13,4 @@
     <?php
         }
     ?>
-    </div>
 </div>
