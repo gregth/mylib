@@ -59,8 +59,8 @@
         $i=0;
         while (mysqli_stmt_fetch( $stmt ) ) {
             $array[$i]['comment'] = $comment ;
-            $array[$i]['author'] = $author;
-            $array[ $i ][ 'authorid' ] = $authorid;
+            $array[$i]['author'][ 'username' ] = $author;
+            $array[ $i ][ 'author' ][ 'uid' ] = $authorid;
             $array[$i][ 'time' ] = $time;
             $i++;
         }
