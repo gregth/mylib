@@ -13,10 +13,12 @@
                 </form>
             </li>
         </ul>
-        <ul class="navbar-nav navbar-right dropdown"><?php
+        <div class=" navbar-right dropdown">
+            <div><a href="add_book_cp.php" class="btn btn-danger" role="button">Προσθήκη Βιβλίου</a></div><?php
             if ( isset( $_SESSION[ 'userid' ] ) ) {
                 ?>
-                    <button class="bar-btn btn btn-danger dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php
+                <div>
+                    <button class="bar-btn btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><?php
                         echo $_SESSION[ 'username' ];
                         ?><span class="caret"> </span>
                     </button>
@@ -28,7 +30,9 @@
                              echo $_SESSION[ 'userid'  ];
                              ?>">Προφίλ</a>
                         </li>
-                        <li><a href="logout.php">Αποσύνδεση</a></li><?php
+                        <li><a href="logout.php">Αποσύνδεση</a></li>
+                    </ul>
+                </div><?php
             }
             else {
                 ?><div class="btn-group">
@@ -42,6 +46,6 @@
                     </ul>
                 </div><?php
             }
-        ?></ul>
+        ?></div>
     </div>
 </nav>
