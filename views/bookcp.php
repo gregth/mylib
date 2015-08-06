@@ -1,7 +1,7 @@
-<div class="group">
-    <div class="container">
-        <h1>Αντύτυπο βιβλίου "<?php echo $bcopy[ 'title' ]; ?>"</h1>
-        <h2>Πληροφορίες για το αντίτυπο</h2>
+<h1><?php echo $bcopy[ 'title' ]; ?></h1>
+<div class="panel panel-default">
+    <h2 class="panel-heading" >Πληροφορίες για το αντίτυπο</h2>
+    <div class="panel-body">
         <div class="card">
             <img src = "<?php echo $bcopy[ 'image' ]; ?>" />
             <h3>Εικόνα αντιτύπου<h3>
@@ -19,4 +19,3 @@
         </form>
     </div>
 </div>
-

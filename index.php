@@ -5,7 +5,7 @@
     require 'views/index_logged_out.php';
     require 'models/show_bookcp_functions.php';
 
-    $books = getLatestBooks( 5 );
+    $books = getLatestBooks( 4 );
     require 'views/new_books.php';
     require 'views/footer.php';
 ?>

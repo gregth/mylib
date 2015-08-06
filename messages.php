@@ -14,11 +14,10 @@
             header("Location: messages.php?discussant=".$_GET[ 'discussant' ] );
         }
         $messages = getUserMessages( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
-        require 'views/header.php';
-        require 'views/messages.php';
         $requests[ 'to' ] = getRequestsFromUserAToB( $_GET[ 'discussant' ], $_SESSION[ 'userid' ]  );
         $requests[ 'from' ] = getRequestsFromUserAToB( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
-        require 'views/message_requests.php';
+        require 'views/header.php';
+        require 'views/messages.php';
         require 'views/footer.php';
         //after rendering the page mark every message as seen
         if ( $messages ) {

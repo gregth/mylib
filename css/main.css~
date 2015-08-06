@@ -15,13 +15,14 @@ body li {
 }
 
 #top-bar {
-  position: fixed;
+  position: fixed ;
   top: 0;
   left: 0;
   background-color: white;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.74) 0 0 5px 0px;
   height: 50px;
+    z-index: 9999;
 }
 
 body { 
@@ -32,7 +33,7 @@ body {
   display: inline-block;
   padding: 10px;
   font-size: 200%;
-  margin-top: 5px;
+  margin-top: -5px;
 }
 
 #top-bar .right {
@@ -89,9 +90,8 @@ li.book-thumbnail {
 
 .book-preview {
   display: block;
-  border-bottom: solid 1px black;
   padding: 20px 0;
-	min-height:200px;
+	min-height:250px;
 }
 
 .card {
@@ -127,7 +127,6 @@ div#footer {
   padding-top: 50px;
   box-shadow: black 1px 1px 4px 1px;
   margin-top: 20px;
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -136,4 +135,24 @@ div#footer {
 #bcopy-thumbnail {
     width:100px;
     height:auto;
+}
+
+#myModal {
+    position : absolute;
+}
+
+td.center {
+    text-align: center;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.right {
+    float: right;
+}
+
+h2.panel-heading {
+	margin-top: 0;
 }

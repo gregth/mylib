@@ -18,19 +18,10 @@
         die();
     }
     $title = 'Προφίλ ' . $data[ 'username' ];
-    require 'views/header.php';
-    require 'views/profile.php';
-    // notifaction for ne msg
-    if( $_GET[ 'uid' ] == $_SESSION[ 'userid' ] ) {
-        $newmsg = getNewMessages ( $_SESSION[ 'userid' ] );
-        if ($newmsg) {
-            require 'views/new_messages.php';
-        }
-    }
+    $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
     $comments = getProfileComments( $_GET[ 'uid' ] );
     $page = 'profile';
-    require 'views/comments.php';
-    $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
-    require 'views/bookcp_list.php';
+    require 'views/header.php';
+    require 'views/profile.php';
     require 'views/footer.php';
 ?>

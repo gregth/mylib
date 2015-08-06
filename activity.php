@@ -2,14 +2,15 @@
     require 'models/connect.php';
     require 'models/redirect.php';
     require 'models/transactions.php';
+    require 'models/message_functions.php';
 
     if( !isset( $_SESSION[ 'userid' ] ) )
         standardRedirect( 'login.php', [ 'red' => 'activity' ] );
 
     $title = 'Δραστηριότητα';
     require 'views/header.php';
-    $requests = getRequestsToUser( $_SESSION[ 'userid' ] );
-    require 'views/requests_to_user.php';
-    $requests = getRequestsFromUser( $_SESSION[ 'userid' ] );
-    require 'views/requests_from_user.php';
+    $requests[ 'to' ] = getRequestsToUser( $_SESSION[ 'userid' ] );
+    $requests[ 'from' ] = getRequestsFromUser( $_SESSION[ 'userid' ] );
+    $messages = getNewMessages( $_SESSION[ 'userid' ] );
+    require 'views/activity.php';
     require 'views/footer.php';

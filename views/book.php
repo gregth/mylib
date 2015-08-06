@@ -1,10 +1,17 @@
-<div class"group" id="book-full">
-    <div class="container">
-        <h1><?php echo $book[ 'title' ]; ?></h1>
-        <div class="inner-group">
-            <h2>Στοιχεία βιβλίου</h2>
-            <img  class="card" src="<?php echo $book[ 'image' ]; ?>" />
-            <div class="details">
+<?php
+    if ( $showTitle ) {
+?>
+<h1 ><?php echo $book[ 'title' ]; ?></h1>
+<?php
+    }
+?>
+<div class="group panel panel-default" id="book-full">
+    <h2 class="panel-heading">Στοιχεία βιβλίου</h2>
+    <div class="inner-group panel-body">
+        <div class="card">
+            <img src="<?php echo $book[ 'image' ]; ?>" />
+        </div>
+        <div class="details">
             <h3>Περίληψη Βιβλίου</h3>
             <p ><?php echo $book[ 'description' ]; ?></p>
             <h3>Συγγραφείς</h3>
@@ -27,7 +34,6 @@
                 }
             ?>
             </ul>
-        </div>
         </div>
     </div>
 </div>
