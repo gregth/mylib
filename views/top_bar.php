@@ -2,10 +2,10 @@
     <div class="wrapper container" >
         <ul class="nav navbar-nav">
             <li>
-                <a href="index.php" >Αρχική</a>
+                <a href="index.php" ><span class="glyphicon glyphicon-home" area-hidden="true"></span> Αρχική</a>
             </li>
             <li>
-                <a href="book.php" >Βιβλία</a>
+                <a href="book.php" ><span class="glyphicon glyphicon-book"></span> Βιβλία</a>
             </li>
             <li>
                 <form class="navbar-form navbar-left" action="book_search.php" method="post" enctype="multipart/form-data">
