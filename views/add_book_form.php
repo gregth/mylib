@@ -2,33 +2,32 @@
     $genres = getGenres();
     $authorsNum = getAuthorsNum( $_GET );
 ?>
-<div class="group">
-    <div>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</div>
-    <form action="<?php echo createUrl( 'add_book.php', [], [ 'red', 'authors' ] ) ?>" method="post" enctype="multipart/form-data">
-        <input type="text" name="title" id="title" class="form-control input-lg" placeholder="Τίτλος Βιβλίου" />
-        <textarea name="description" id="description" class="form-control" placeholder="Περίληψη Βιβλίου"></textarea>
-          <span class="input-group-addon" id="basic-addon1">@</span>
-            <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
-
-
-        <input type="file" name="cover_img" id="cover_img" placeholder="Εικόνα Εξωφύλλου" />
-        <?php
-            for ( $i = 0; $i < $authorsNum; $i++ ) {
+<h1>Καταχώρηση Βιβλίου</h1>
+<div class="panel panel-default" >
+    <div class="panel-heading" >
+        <h2>Στοιχεία Βιβλίου</h2>
+        <p>Συμπληρώστε τα επίσημα στοιχεία του αρχικού βιβλίου</p>
+    </div>
+    <form class="panel-body" action="<?php
+    echo createUrl( 'add_book.php', [], [ 'red', 'authors' ] );
+    ?>" method="post" enctype="multipart/form-data">
+        <label for="title">Τίτλος Βιβλίου</label>
+        <input type="text" name="title" id="title" class="form-control input-lg" placeholder="Γράψτε τον επίσημο τίτλο του βιβλίου" />
+        <label for="description">Περιγραφή</label>
+        <textarea name="description" id="description" class="form-control" placeholder="Πληκτρολογήστε την επίσημη περιγραφή του βιβλίου"></textarea>
+        <label for="cover_img">Εικόνα Εξωφύλλου</label>
+        <input type="file" name="cover_img" id="cover_img" />
+        <label for="authors[]">Συγγραφέας</label><?php
+        for ( $i = 0; $i < $authorsNum; $i++ ) {
+            ?><input type="text" name="authors[]" placeholder="Συγγραφέας" class="input-lg" /><?php
+        }
         ?>
-                <input type="text" name="authors[]" placeholder="Συγγραφέας" />
-        <?php
-            }
-        ?>
-        <select multiple="multiple" name="genres[]"id="add-book">
-        <?php
+        <label for="genres[]">Κατηγορίες</label>
+        <select multiple="multiple" name="genres[]"id="add-book"><?php
             foreach ( $genres as $id => $genre ) {
-        ?>
-          <option value="<?php echo $id; ?>"><?php echo $genre; ?></option>
-        <?php
+                ?><option value="<?php echo $id; ?>"><?php echo $genre; ?></option><?php
             }
-        ?>
-        </select>
-        <input type="submit" value="Καταχώριση Βιβλίου" />
-
+        ?></select>
+        <input class="btn btn-primary" type="submit" value="Συνέχεια" />
     </form>
 </div>
