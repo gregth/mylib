@@ -28,18 +28,12 @@ Licensed under MIT
             <!-- SIDEBAR MENU -->
             <div class="profile-usermenu">
                 <ul class="nav">
-                    <?php
-                        if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
-                    ?>
-                    <li>
-                        <a href="editprofile.php" data-toggle="modal" data-target="#MyModal" >
-                        <i class="glyphicon glyphicon-user"></i>
-                        Επεξεργασία Προφίλ</a>
-                    </li>
-                    <?php
-                        }
-                    ?>
                     <li class="active">
+                        <a href="#info" target="_blank" data-toggle="tab">
+                        <i class="glyphicon glyphicon-home"></i>
+                        Γενικά στοιχεία</a>
+                    </li>
+                    <li>
                         <a href="#bcopies" target="_blank" data-toggle="tab">
                             <i class="glyphicon glyphicon-book"></i>
                             Βιβλία
@@ -50,13 +44,15 @@ Licensed under MIT
                             <i class="glyphicon glyphicon-comment"></i>
                             Σχόλια
                         </a>
-                    </li>
-                    <li>
-                        <a href="#info" target="_blank" data-toggle="tab">
-                        <i class="glyphicon glyphicon-home"></i>
-                        Γενικά στοιχεία</a>
-                    </li>
-                </ul>
+                    </li> <?php
+                        if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
+                            ?><li>
+                                <a href="editprofile.php" data-toggle="modal" data-target="#MyModal" >
+                                <i class="glyphicon glyphicon-user"></i>
+                                Επεξεργασία Προφίλ</a>
+                            </li><?php
+                        }
+                    ?></ul>
             </div>
             <!-- END MENU -->
         </div>

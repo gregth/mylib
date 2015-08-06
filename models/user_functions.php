@@ -78,15 +78,33 @@
     function getUserData ( $uid ) {
         global $db;
         $stmt = mysqli_prepare($db,
-            "SELECT username , firstname , lastname , email, profileimg FROM users WHERE uid = ? LIMIT 1");
+            "SELECT
+                username,
+                firstname,
+                lastname,
+                email,
+                profileimg,
+                UNIX_TIMESTAMP( registertime )
+            FROM users
+            WHERE uid = ?
+            LIMIT 1
+            ");
         mysqli_stmt_bind_param( $stmt, "s", $uid  );
         mysqli_stmt_execute( $stmt);
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email, $img );
+        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email, $img, $time );
         if ( mysqli_stmt_fetch($stmt) == NULL ) {
             return false;
         }
-        $retData = [ 'userid' => $uid, 'username' => $username, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'img' => $img ];
+        $retData = [
+            'userid' => $uid,
+            'username' => $username,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'img' => $img,
+            'registerTime' => $time
+            ];
         return $retData;
     }
 
