@@ -6,7 +6,7 @@
         </ul>
         <div class="searchBox">
             <form action = "book_search.php" method="post" enctype="multipart/form-data">
-                <input type ="text" name = "userQuery"  placeholder = "Αναζήτηση">
+                <input class="typeahead form-control" autocomplete="off" type ="text" name = "userQuery"  placeholder = "Αναζήτηση">
             </form>
         </div>
         <ul class="inline right" >
@@ -27,3 +27,4 @@
     </div>
 </div>
 <?php require "views/edit_profile_modal.php";?>
+<script src="js/searchBox.js" type="text/javascript"></script>
