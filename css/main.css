@@ -75,17 +75,9 @@ li.#user-menu {
   margin-left: 10px;
 }
 
-#latest-books .book-thumbnail {
-  width: 18%;
-}
-li.book-thumbnail {
-  float: left;
-	margin: 5px;
-}
-
 .book-thumbnail img {
   width: 100%;
-  height: 200px;
+  height: auto;
 }
 
 .card {
@@ -144,6 +136,15 @@ td.center {
     float: right;
 }
 
-h2.panel-heading {
+h2.panel-heading, .panel-heading h2 {
 	margin-top: 0;
+}
+
+.author-details {
+  font-size: 90%;
+  opacity: 0.9;
+}
+
+body {
+    color:rgba(94, 96, 111, 0.9);
 }
