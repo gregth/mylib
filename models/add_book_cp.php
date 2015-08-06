@@ -22,7 +22,7 @@
         $description = $postdata[ 'description' ];
         $bid = $getdata[ 'bid' ];
         $path = imageUpload( 'data/bcopy_images/', 'bcopyimage' );
-        $stmt = mysqli_prepare( $db, 'INSERT INTO bcopies SET bid = ?, uid = ?, description = ?,  image = ?, sold = 0 ' );
+        $stmt = mysqli_prepare( $db, 'INSERT INTO bcopies SET bid = ?, uid = ?, description = ?,  image = ?' );
         mysqli_stmt_bind_param( $stmt,'iiss',  $bid ,$_SESSION[ 'userid' ], $description, $path );
         mysqli_execute( $stmt );
         $bcid = mysqli_insert_id( $db );
