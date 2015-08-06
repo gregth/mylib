@@ -1,8 +1,8 @@
 <?php
-    //Retur fail if it fails registering the user, otherwise returns the user id
     require 'image_upload.php';
-    function  register_user($data)
-    {
+
+    //Returns fail if it fails registering the user, otherwise returns the user id
+    function  register_user( $data ) {
         global $db;
         $username = $data['username'];
         $first_name = $data['first_name'];
@@ -11,10 +11,13 @@
         $path = imageUpload( 'data/profile_imgs/', 'profileimg' );
         $hash = hash_fun($data['password']); //hash with salt at the end
         list($passhash,$salt) = explode("^",$hash);
+        echo "TI";
         $stmt = mysqli_prepare($db,
             "INSERT INTO users SET username = ? , password = ? , salt = ? , firstname = ? , lastname = ? , email = ?, profileimg = ? ");
         mysqli_stmt_bind_param($stmt,"sssssss",$username,$passhash,$salt,$first_name,$last_name,$email, $path );
         mysqli_stmt_execute($stmt);
+        mysqli_stmt_store_result( $stmt );
+        var_dump( $stmt );
         if ( mysqli_affected_rows($db) != 1 ) {
             return false;
         }
@@ -78,15 +81,33 @@
     function getUserData ( $uid ) {
         global $db;
         $stmt = mysqli_prepare($db,
-            "SELECT username , firstname , lastname , email, profileimg FROM users WHERE uid = ? LIMIT 1");
+            "SELECT
+                username,
+                firstname,
+                lastname,
+                email,
+                profileimg,
+                UNIX_TIMESTAMP( registertime )
+            FROM users
+            WHERE uid = ?
+            LIMIT 1
+            ");
         mysqli_stmt_bind_param( $stmt, "s", $uid  );
         mysqli_stmt_execute( $stmt);
         mysqli_stmt_store_result( $stmt );
-        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email, $img );
+        mysqli_stmt_bind_result( $stmt , $username, $firstname, $lastname, $email, $img, $time );
         if ( mysqli_stmt_fetch($stmt) == NULL ) {
             return false;
         }
-        $retData = [ 'userid' => $uid, 'username' => $username, 'firstname' => $firstname, 'lastname' => $lastname, 'email' => $email, 'img' => $img ];
+        $retData = [
+            'userid' => $uid,
+            'username' => $username,
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'img' => $img,
+            'registerTime' => $time
+            ];
         return $retData;
     }
 

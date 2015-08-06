@@ -20,7 +20,7 @@
         standardRedirect( '404.php' );
     }
     $title = 'Δήλωση αντιτύπου για "' .$book[ 'title' ] . '"';
-
+    $showHeading = false;
     //Check if user is submitting a book copy
     if ( !empty ( $_POST ) ) {
         $res = validateBookCpData( $_POST, $_FILES );
@@ -36,16 +36,14 @@
             $errors = $res;
             require 'views/header.php';
             require 'views/form_errors.php';
-            require 'views/book_copy_form.php';
-            require 'views/book.php';
+            require 'views/add_book_copy.php';
             require 'views/footer.php';
         }
     }
     else {
         //Show add copy form and append the book details
         require 'views/header.php';
-        require 'views/book_copy_form.php';
-        require 'views/book.php';
+        require 'views/add_book_copy.php';
         require 'views/footer.php';
     }
 ?>

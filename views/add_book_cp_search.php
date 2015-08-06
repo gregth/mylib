@@ -1,8 +1,9 @@
-<div class="group">
-    <h1>Δήλωση βιβλίου προς ανταλλαγή<h1>
-    <h2>Αναζητήστε το τίτλο του βιβλίου<h2>
-    <form action="add_book_search.php" method="GET">
-        <input type="text" name="search" placeholder"Τίτλος Βιβλίου" />
-        <input type="submit" value="Αναζήτηση" />
-    </form>
+<h1>Προσθήκη Βιβλίου > Αναζήτηση<h1>
+<div class="row">
+    <div class="col-md-4"><?php
+        require 'views/bcopy_search_panel.php';
+    ?></div>
+    <div class="col-md-8"><?php
+        require 'views/book_results.php';
+    ?> </div>
 </div>

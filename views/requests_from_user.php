@@ -6,7 +6,7 @@
     ?><li class="list-group-item" >Δεν έχετε ζητήσει κάποιο βιβλίο ακόμη</li><?php
     }
     foreach ( $requests[ 'from' ] as $request ) {
-        ?><li class="list-group-item">Ζητήσατε από το χρήστη <a href="profile.php?uid=<?php
+        ?><li class="list-group-item">Ζητήσατε από το χρήστη <a href="profiler.php?uid=<?php
         echo $request[ 'owner' ][ 'uid' ];
         ?>" ><?php
         echo $request[ 'owner' ][ 'username' ];

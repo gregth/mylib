@@ -17,7 +17,7 @@
             $page = 'bookcp';
             require 'views/comments.php';
             $book = getBookDetails ( $bcopy[ 'bid' ] );
-            $showTitle = false;
+            $showHeading = false;
             require 'views/book.php';
             require 'views/footer.php';
         }
