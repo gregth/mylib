@@ -8,4 +8,7 @@
   <div id="bcopies" class="tab-pane fade"><?php
     require 'views/user_book_copies.php';
   ?></div>
+  <div id="edit" class="tab-pane fade"><?php
+    require 'views/edit_profile_modal.php';
+  ?></div>
 </div>
