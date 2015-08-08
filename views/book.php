@@ -18,26 +18,30 @@
             </div>
         </div>
         <div class="row">
-            <h3>Συγγραφείς</h3>
-            <ul class="list-group genres">
-            <?php
-                foreach ( $book[ 'authors' ] as $author => $bool ) {
-            ?>
-                    <li class="list-group-item"><?php echo $author; ?></li>
-            <?php
-                }
-            ?>
-            </ul>
-            <h3>Κατηγορίες</h3>
-            <ul class="list-group genres">
-            <?php
-                foreach ( $book[ 'genres' ] as $genre => $bool ) {
-            ?>
-                    <li class="list-group-item"><?php echo $genre; ?></li>
-            <?php
-                }
-            ?>
-            </ul>
+            <div class="col-md-6" >
+                <h3>Συγγραφείς</h3>
+                <ul class="list-group genres">
+                <?php
+                    foreach ( $book[ 'authors' ] as $author => $bool ) {
+                ?>
+                        <li class="list-group-item"><?php echo $author; ?></li>
+                <?php
+                    }
+                ?>
+                </ul>
+            </div>
+            <div class="col-md-6" >
+                <h3>Κατηγορίες</h3>
+                <ul class="list-group genres">
+                <?php
+                    foreach ( $book[ 'genres' ] as $genre => $bool ) {
+                ?>
+                        <li class="list-group-item"><?php echo $genre; ?></li>
+                <?php
+                    }
+                ?>
+                </ul>
+            </div>
         </div>
     </div>
 </div>
