@@ -9,7 +9,7 @@
             </li>
             <li>
                 <form class="navbar-form navbar-left" action="book_search.php" method="post" enctype="multipart/form-data">
-                    <input type ="text" name = "userQuery" class="form-control" placeholder = "Αναζήτηση">
+                    <input class ="typeahead form-control" autocomplete="off" type ="text" name = "userQuery" class="form-control" placeholder = "Αναζήτηση">
                 </form>
             </li>
         </ul>
@@ -49,3 +49,5 @@
         ?></div>
     </div>
 </nav>
+<script src="js/searchBox.js" type="text/javascript">
+</script>

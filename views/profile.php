@@ -47,7 +47,7 @@ Licensed under MIT
                     </li> <?php
                         if ( $_GET[ 'uid' ] == $_SESSION [ 'userid' ] ) {
                             ?><li>
-                                <a href="editprofile.php" data-toggle="modal" data-target="#MyModal" >
+                                <a href="#edit" target="_blank" data-toggle="tab"  >
                                 <i class="glyphicon glyphicon-user"></i>
                                 Επεξεργασία Προφίλ</a>
                             </li><?php
