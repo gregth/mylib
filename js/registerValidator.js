@@ -1,5 +1,4 @@
 //ajax validation for each field  -- validates while typing or when you unfocus a field(to cach autofill and for e-mail)
-var isValid = true;
 $('#username').focus(function() {
     $('#username').on('keyup change', function () {
         var val = $('#username').val();
@@ -86,6 +85,7 @@ $('#password').focus(function() {
 });
 // checks for empty fields
 $('#regForm').submit( function(e) {
+var isValid = true;
     $("form#regForm input[type=text],input[type=password]").each ( function() { 
         if ($.trim( $( this ).val( ) ) == '') {
             isValid = false;
