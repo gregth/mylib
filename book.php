@@ -19,10 +19,6 @@
         }
     }
     else {
-        $title = 'Διαθέσιμα βιβλία';
-        $books = getAllBooks();
-        require 'views/header.php';
-        require 'views/books_results.php';
-        require 'views/footer.php';
+        standardRedirect( 'books.php' );
     }
 ?>
