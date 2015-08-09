@@ -7,6 +7,6 @@
     $title = 'Διαθέσιμα βιβλία';
     $books = getAllBooks();
     require 'views/header.php';
-    require 'views/books_results.php';
+    require 'views/books/books.php';
     require 'views/footer.php';
 ?>
