@@ -1,14 +1,15 @@
 <div class="group panel panel-default">
-    <h2 class="panel-heading">Διαθέσιμα Βιβλία</h2>
+    <h2 class="panel-heading">iΔιαθέσιμα Βιβλία</h2>
     <ul class="list-group" id="books">
     <?php
         foreach ( $books as $id => $book ) {
     ?>
         <li class="list-group-item book-preview">
-            <div class="card">
+            <div class="row">
+            <div class="card col-md-4">
                 <img src="<?php echo $book[ 'img' ]; ?>" />
             </div>
-            <div class="details">
+            <div class="details col-md-8">
                 <h2><?php echo $book[ 'title' ]; ?></h2>
                 <p class="description"><?php echo $book[ 'description' ]; ?></p>
             <?php
@@ -25,6 +26,7 @@
                     }
                 }
             ?>
+            </div>
             </div>
     </li>
 </div>
