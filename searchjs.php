@@ -4,5 +4,5 @@
     require "models/do_book_search.php";
     $books = bookSearch( $_POST[ 'q' ] );
     echo json_encode($books);
-    
+
 ?>

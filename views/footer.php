@@ -6,5 +6,6 @@
                 </li>
             </ul>
         </div>
+        <script src="js/test.js" type="text/javascript"></script>
   </body>
 </html>

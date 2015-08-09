@@ -15,10 +15,11 @@
             </li><?php
             foreach ( $books as $id => $book ) {
                 ?><li class="list-group-item book-preview">
-                    <div class="card">
+                    <div class="row" >
+                    <div class="card col-md-4">
                         <img src="<?php echo $book[ 'img' ]; ?>" />
                     </div>
-                    <div class="details">
+                    <div class="details col-md-8">
                         <h2><?php echo $book[ 'title' ]; ?></h2>
                         <p class="description"><?php
                         echo $book[ 'description' ];
@@ -26,6 +27,7 @@
                         <a href="add_book_cp.php?bid=<?php
                         echo $book[ 'bid' ];
                         ?>">Επιλογή</a>
+                    </div>
                     </div>
                 </li><?php
             }

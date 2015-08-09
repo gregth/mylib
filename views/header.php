@@ -16,6 +16,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript" src="js/book_search.js"></script>
     <link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/profile.css" type="text/css"/>
