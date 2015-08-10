@@ -80,10 +80,11 @@ li.#user-menu {
   height: auto;
 }
 
-.card {
+card {
 	float:left;
  margin: 10px 20px 20px 0;
- width: 30%;
+max-height: 320px;
+overflow:hidden;
 }
 
 .card img {
@@ -235,9 +236,17 @@ a.btn, button.dropdown-toggle {
   float: left;
   margin: 8px 5px;
 }
+#books .image-wrapper {
+	max-height: 300px;
+	overflow: hidden;
+}
 
-#book .row {
+#books .image-wrapper img {
+	width: 100%;
+	height: auto;
+}
+#books .row {
     margin-left:0;
     text-align: justify;
-    margin-right: 5px;
+	margin: 10px;
 }

@@ -4,8 +4,8 @@
         <p>Χρησιμοποιείστε την αναζήτηση για να περιορίσετε τα βιβλία που εμφανίζονται</p>
     </div>
     <div class="panel-body">
-        <form class="panel-body" action="add_book_search.php" method="GET">
-            <input id="instant-search" type="text" name="search" placeholder"Τίτλος Βιβλίου" />
+        <form class="panel-body" action="books.php" method="GET">
+            <input id="books-instant-search" type="text" name="search" placeholder"Τίτλος Βιβλίου" />
             <input type="submit" value="Αναζήτηση" />
         </form>
     </div>

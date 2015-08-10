@@ -1,24 +1,18 @@
-<div class="panel panel-default">
-    <h2 class="panel-heading">Λίστα βιβλίων</h2>
-    <ul class="list-group" id="books"><?php
-        foreach ( $books as $id => $book ) {
-            ?><li class="list-group-item book-preview">
-                <div class="row">
-                    <div class="card col-md-4">
+<?php
+    foreach ( $books as $id => $book ) {
+        ?><div id="books" class="panel panel-default">
+            <h2 class="panel-heading"><?php echo $book[ 'title' ]; ?></h2>
+            <div class="row">
+                <div class=" col-md-4">
+                    <div class="image-wrapper">
                         <img src="<?php echo $book[ 'img' ]; ?>" />
                     </div>
-                    <div class="details col-md-8">
-                        <h2><?php echo $book[ 'title' ]; ?></h2>
-                        <p class="description"><?php echo $book[ 'description' ]; ?></p><?php
-                        if ( isset( $addBookMode ) ) {
-                            ?><a href="add_book_cp.php?bid=<?php echo $book[ 'bid' ] ?>">Δήλωση για ανταλλαγή</a><?php
-                        }
-                        else {
-                            ?><a href="book.php?bid=<?php echo $id ?>">Διαβάστε περισσότερα</a><?php
-                        }
-                    ?></div>
                 </div>
-            </li><?php
-        }
-    ?></ul>
-</div>
+                <div class="details col-md-8">
+                    <p class="description"><?php echo $book[ 'description' ]; ?></p>
+                    <a class="btn btn-default" href="book.php?bid=<?php echo $id ?>">Δείτε περισσότερα</a>
+                </div>
+            </div>
+        </div><?php
+    }
+?>

@@ -38,3 +38,43 @@ $( function( ) {
         });
     });
 });
+
+
+$( function( ) {
+    var input = $( "#books-instant-search" );
+    var r = $( "#books" );
+    input.keyup( function( e ) {
+        var userQuery = input.val();
+        $.ajax( { 
+            type: 'GET',
+            dataType: 'json', 
+            url: 'searchBooksJSON.php',
+            data: { query: userQuery },
+            success: function( response ) {
+                r.empty();
+                if ( response[ 'empty' ] ) {
+
+                    r.html( '<li class="list-group-item">Κανένα βιβλίο με αυτούς τους όρους αναζήτησης.</li>' );
+                } 
+                else { 
+                    $.each( response[ 'books' ], function( i, book ) {
+                        r.append( 
+                            '<li class="list-group-item">' +
+                                '<div class="row">' +
+                                    '<div class="card col-md-4">' +
+                                        '<img src="' + book[ 'img' ] +  '"/>' +
+                                    '</div>' +                                                                                                                             
+                                    '<div class="details col-md-8">' +
+                                        '<h2>' + book[ 'title' ] + '</h2>' +
+                                        '<p class="description">' + book[ 'description' ]  + '</p>' +
+                                        '<a href="add_book_cp.php?bid=' + book[ 'bid' ] + '</a>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</li>'
+                        );
+                 });   
+               }
+            }
+        });
+    });
+});

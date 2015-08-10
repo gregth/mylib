@@ -14,14 +14,12 @@
     // get user data from db
     $data = getUserData( $_GET[ 'uid' ] );
     if ( !$data ) {
-        header( 'Location: 404.php' );
-        die();
+        standardRedirect( '404.php' );
     }
     $title = 'Προφίλ ' . $data[ 'username' ];
     $bookCopies = getUserBcopies ( $_GET[ 'uid' ] );
     $comments = getProfileComments( $_GET[ 'uid' ] );
-    $page = 'profile';
     require 'views/header.php';
-    require 'views/profile.php';
+    require 'views/user/profile.php';
     require 'views/footer.php';
 ?>
