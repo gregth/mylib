@@ -36,14 +36,14 @@
             $errors = $res;
             require 'views/header.php';
             require 'views/form_errors.php';
-            require 'views/add_book_copy.php';
+            require 'views/book_cp/add_book_copy.php';
             require 'views/footer.php';
         }
     }
     else {
         //Show add copy form and append the book details
         require 'views/header.php';
-        require 'views/add_book_copy.php';
+        require 'views/book_cp/add_book_copy.php';
         require 'views/footer.php';
     }
 ?>

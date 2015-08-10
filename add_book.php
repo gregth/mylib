@@ -12,11 +12,11 @@
         require 'views/header.php';
         if ( !$errors ) {
             $bid = addBook( $_POST, $_FILES );
-            dynamicRedirect( 'book.php', [ 'bid' => $bid ] );
+            dynamicRedirect( 'add_bookcp.php', [ 'bid' => $bid ] );
         }
         else {
             require 'views/form_errors.php';
-            require 'views/add_book_form.php';
+            require 'views/book/add_form.php';
         }
         require 'views/footer.php';
     }
@@ -27,9 +27,11 @@
         if ( $authors != $_GET[ 'authors' ] ) {
             standardRedirect( 'add_book.php', [ 'authors' => 1 ], [ 'red' ] );
         }
+        $genres = getGenres();
+        $authorsNum = getAuthorsNum( $_GET );
         $title = 'Προσθήκη Βιβλίου';
         require 'views/header.php';
-        require 'views/add_book_form.php';
+        require 'views/book/add_form.php';
         require 'views/footer.php';
     }
 ?>
