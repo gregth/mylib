@@ -3,7 +3,9 @@
     <div class="inner-group panel-body">
         <div class="row">
             <div class="card col-md-4">
-                <img src="<?php echo $book[ 'image' ]; ?>" />
+                <div class="image-wrapper">
+                    <img src="<?php echo $book[ 'image' ]; ?>" />
+                </div>
             </div>
             <div class="details col-md-8">
                 <h3>Περίληψη Βιβλίου</h3>

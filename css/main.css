@@ -236,12 +236,12 @@ a.btn, button.dropdown-toggle {
   float: left;
   margin: 8px 5px;
 }
-#books .image-wrapper {
+#books .image-wrapper, #book .image-wrapper {
 	max-height: 300px;
 	overflow: hidden;
 }
 
-#books .image-wrapper img {
+#books .image-wrapper, #book .image-wrapper {
 	width: 100%;
 	height: auto;
 }
@@ -255,7 +255,12 @@ a.btn, button.dropdown-toggle {
 	margin-bottom: 20px;
 }
 
+.full-width {
+	width: 100%;
+}
+
 #book .panel-body {
     margin: 10px 20px;
     text-align: justify;
 }
+

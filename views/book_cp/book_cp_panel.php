@@ -13,8 +13,6 @@
                 <h3>Περιγραφή</h3><p><?php echo $bcopy[ 'description' ];?></p>
             </div>
         </div>
-        <form method="POST" action="<?php echo createUrl( 'request.php', [], [ 'bcid' ] ); ?>"  >
-            <input type="submit" value="Το θέλω!" />
-        </form>
+        <a href="<?php echo createUrl( 'request.php', [], [ 'bcid' ] ); ?>" class="full-width btn btn-primary">Το θέλω!</a>
     </div>
 </div>
