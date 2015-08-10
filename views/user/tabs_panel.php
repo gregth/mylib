@@ -16,7 +16,9 @@
     <!-- END SIDEBAR USER TITLE -->
     <!-- SIDEBAR BUTTONS -->
     <div class="profile-userbuttons">
-        <a type="button" class="btn btn-danger btn-sm" href="messages.php?discussant=<?php $_GET[ 'uid' ]; ?>">Επικοινωνία</a>
+        <?php if ( $_SESSION[ 'userid' ] != $_GET[ 'uid' ] ) { ?>
+            <a type="button" class="btn btn-danger btn-sm" href="messages.php?discussant=<?php echo $_GET[ 'uid' ]; ?>">Επικοινωνία</a>
+        <?php } ?>
     </div>
     <!-- END SIDEBAR BUTTONS -->
     <!-- SIDEBAR MENU -->
