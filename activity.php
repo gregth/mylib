@@ -8,9 +8,9 @@
         standardRedirect( 'login.php', [ 'red' => 'activity' ] );
 
     $title = 'Δραστηριότητα';
-    require 'views/header.php';
     $requests[ 'to' ] = getRequestsToUser( $_SESSION[ 'userid' ] );
     $requests[ 'from' ] = getRequestsFromUser( $_SESSION[ 'userid' ] );
     $messages = getNewMessages( $_SESSION[ 'userid' ] );
-    require 'views/activity.php';
+    require 'views/header.php';
+    require 'views/activity/activity_board.php';
     require 'views/footer.php';
