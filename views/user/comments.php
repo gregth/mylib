@@ -26,6 +26,9 @@
             }
          }
     ?></ul>
+</div>
+<div class="panel panel-default">
+    <h2 class="panel-heading">Πρόσθεσε το δικό σου σχόλιο</h2>
     <div class="panel-body">
         <form action = "<?php
             echo createUrl( 'add_comment.php', [], [ 'bcid', 'uid' ] );

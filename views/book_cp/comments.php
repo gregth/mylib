@@ -26,12 +26,15 @@
             }
          }
     ?></ul>
+</div>
+<div class="panel panel-default">
+    <h2 class="panel-heading">Πρόσθεσε το δικό σου σχόλιο</h2>
     <div class="panel-body">
         <form action = "<?php
             echo createUrl( 'add_comment.php', [], [ 'bcid', 'uid' ] );
             ?>" method = "post">
             <textarea name = "comment" placeholder="Γράψε τώρα το σχόλιό σου..."></textarea>
-            <input type = "submit" value = "Προσθήκη" class="btn btn-primary" >
+            <input type = "submit" value = "Προσθήκη" class="btn btn-default" >
         </form>
     </div>
 </div>
