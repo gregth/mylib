@@ -13,7 +13,13 @@
             echo $request[ 'bcid' ];
             ?>"><?php
             echo $request[ 'title' ];
-            ?></a></li><?php
+            ?></a>
+            <a class="btn btn-primary" href="give.php?bcid=<?php
+            echo $request[ 'bcid' ];
+            ?>&receiverid=<?php
+            echo $request[ 'uid' ];
+            ?>">Αποδοχή</a>
+            </li><?php
         }
     ?></ul>
 </div>

@@ -17,7 +17,7 @@
         $requests[ 'to' ] = getRequestsFromUserAToB( $_GET[ 'discussant' ], $_SESSION[ 'userid' ]  );
         $requests[ 'from' ] = getRequestsFromUserAToB( $_SESSION[ 'userid' ], $_GET[ 'discussant' ] );
         require 'views/header.php';
-        require 'views/messages.php';
+        require 'views/messages/messages.php';
         require 'views/footer.php';
         //after rendering the page mark every message as seen
         if ( $messages ) {
