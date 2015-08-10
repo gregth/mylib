@@ -243,9 +243,14 @@ a.btn, button.dropdown-toggle {
 
 #books .image-wrapper img {
 	width: 100%;
+	height: auto;
 }
 #books .row {
     margin-left:0;
     text-align: justify;
 	margin: 10px;
+}
+
+#book-copy-tabs {
+	margin-bottom: 20px;
 }

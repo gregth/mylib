@@ -250,3 +250,12 @@ a.btn, button.dropdown-toggle {
     text-align: justify;
 	margin: 10px;
 }
+
+#book-copy-tabs {
+	margin-bottom: 20px;
+}
+
+#book .panel-body {
+    margin: 10px 20px;
+    text-align: justify;
+}

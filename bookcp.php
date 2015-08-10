@@ -13,6 +13,7 @@
             $title = $bcopy[ 'title' ];
             $book = getBookDetails ( $bcopy[ 'bid' ] );
             $comments = getBcopyComments( $_GET[ 'bcid' ] );
+            $showHeading = false;
             require 'views/header.php';
             require 'views/book_cp/book_cp.php';
             require 'views/footer.php';
