@@ -1,4 +1,3 @@
-<h1><?php echo $bcopy[ 'title' ]; ?></h1>
 <div class="panel panel-default">
     <h2 class="panel-heading" >Πληροφορίες για το αντίτυπο</h2>
     <div class="panel-body">

@@ -1,14 +1,8 @@
 <div class="panel panel-default">
-    <div class="panel-heading"><?php
-        if ( $page == 'profile' ) {
-            ?><h2>Σχόλια</h2>
-             <p>Εδώ μπορείς να διαβάσεις αξιλογήσεις και σχόλια για το χρήστη.</p><?php
-        }
-        else {
-            ?><h2>Σχόλια ή απορίες για το το αντίτυπο</h2>
-            <p>Γράψτε εδώ ότι απορίες έχετε σχετια με το αντίτυπο του βιβλίου</p><?php
-        }
-    ?></div>
+    <div class="panel-heading">
+        <h2>Σχόλια</h2>
+        <p>Εδώ μπορείς να διαβάσεις αξιλογήσεις και σχόλια για το χρήστη.</p>
+    </div>
     <ul class="list-group"><?php
         if ( empty($comments ) ) {
              ?><li class="comment">Δεν υπάρχει κανένα σχόλιο μέχρι στιγμής</li><?php

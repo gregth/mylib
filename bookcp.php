@@ -11,23 +11,18 @@
         //if bcid does not exist redirects to 404 page
         if ( $bcopy = getBcopyDetails( $_GET[ 'bcid' ] ) ) {
             $title = $bcopy[ 'title' ];
-            require 'views/header.php';
-            require 'views/bookcp.php';
-            $comments = getBcopyComments( $_GET[ 'bcid' ] );
-            $page = 'bookcp';
-            require 'views/comments.php';
             $book = getBookDetails ( $bcopy[ 'bid' ] );
-            $showHeading = false;
-            require 'views/book.php';
+            $comments = getBcopyComments( $_GET[ 'bcid' ] );
+            require 'views/header.php';
+            require 'views/book_cp/book_cp.php';
             require 'views/footer.php';
         }
         else {
-            header( 'Location: 404.php' );
+            standardRedirect( 'Location: 404.php' );
         }
     }
     else {
-         header( 'Location: index.php' );
+         standardRedirect( 'Location: index.php' );
     }
-
 ?>
 
