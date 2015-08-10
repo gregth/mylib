@@ -8,14 +8,13 @@
     if ( isset( $_GET[ 'bid' ] ) ) {
         if ( $book = getBookDetails( $_GET[ 'bid' ] ) ) {
             $title = $book[ 'title' ];
-            require 'views/header.php';
-            require 'views/book.php';
             $bookCopies = getBcopies( $_GET[ 'bid' ] );
-            require 'views/bookcp_list.php';
+            require 'views/header.php';
+            require 'views/book/book.php';
             require 'views/footer.php';
         }
         else {
-            header( 'Location: 404.php' );
+            standardRedirect( 'Location: 404.php' );
         }
     }
     else {

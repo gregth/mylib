@@ -5,7 +5,7 @@
 
 <div class="tab-content">
     <div id="book" class="tab-pane fade in active"><?php
-        require 'views/book/book.php';
+        require 'views/book/book_info.php';
     ?></div>
     <div id="comments" class="tab-pane fade"><?php
         require 'views/book_cp/comments.php';
