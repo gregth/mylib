@@ -284,6 +284,11 @@ a.btn, button.dropdown-toggle {
     	text-shadow: black 0 0 20px;
 	
 }
+#latest-books .image-wrapper {
+    height: 375px;
+    background-color: black;
+    overflow: hidden;
+}
 
 #main-banner h2 {
 	margin: 50px;

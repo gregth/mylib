@@ -279,10 +279,14 @@ a.btn, button.dropdown-toggle {
 	text-align: center;
 	color: white;
 	overflow: hidden;
-	padding: 50% 0;
+	padding: 10% 0;
 	background-size: cover;
     	text-shadow: black 0 0 20px;
 	
+}
+#latest-books .image-wrapper {
+    height: 320 px;
+    background-color: black;
 }
 
 #main-banner h2 {

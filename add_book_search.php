@@ -9,7 +9,7 @@
         $books = bookSearch( $_GET[ 'search' ] );
     }
     require 'views/header.php';
-    require 'views/add_book_cp_search.php';
+    require 'views/book_add_search/search.php';
     require 'views/footer.php';
 ?>
 
