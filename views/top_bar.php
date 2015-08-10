@@ -7,11 +7,6 @@
             <li>
                 <a href="book.php" >Βιβλία</a>
             </li>
-            <li>
-                <form class="navbar-form navbar-left" action="book_search.php" method="post" enctype="multipart/form-data">
-                    <input class ="typeahead form-control" autocomplete="off" type ="text" name = "userQuery" class="form-control" placeholder = "Αναζήτηση">
-                </form>
-            </li>
         </ul>
         <div class=" navbar-right dropdown">
             <div><a href="add_book_cp.php" class="btn btn-danger" role="button">Προσθήκη Βιβλίου</a></div><?php
