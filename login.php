@@ -7,30 +7,28 @@
         //User has logged in, Redirect to index.php
         standardRedirect('profiler.php', [ 'uid' => $_SESSION[ 'userid' ] ] );
     }
+
+    if ( empty( $_POST ) ) {
+        require 'views/header.php';
+        require 'views/user/form_errors.php';
+        require 'views/user/login_form.php';
+        require 'views/footer.php';
+    }
     else {
-        if ( empty( $_POST ) ) {
-            //Show login form
+        //Authenticate user
+        $user = authenticate_user( $_POST );
+        if ( $user === false ) {
+            $errors[] = 'Τα στοιχεία που δώσατε δεν είναι σωστά';
             require 'views/header.php';
-            require 'views/login_form.php';
+            require 'views/user/form_errors.php';
+            require 'views/user/login_form.php';
             require 'views/footer.php';
         }
         else {
-            //Authenticate user
-            $user = authenticate_user( $_POST );
-            if ( $user === false ) {
-                require 'views/header.php';
-                require 'views/login_errors.php';
-                require 'views/login_form.php';
-                require 'views/footer.php';
+            foreach ( $user as $key => $value ) {
+                $_SESSION[ $key ] = $value;
             }
-            else {
-                foreach ( $user as $key => $value ) {
-                    $_SESSION[ $key ] = $value;
-                }
-                dynamicRedirect( 'index.php' );
-            }
+            dynamicRedirect( 'index.php' );
         }
     }
 ?>
-
-
