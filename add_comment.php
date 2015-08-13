@@ -9,12 +9,13 @@
         header("Location: login.php");
         die();
     }
-    if ( isset( $_GET[ 'profileid' ] ) ) {
+    if ( isset( $_GET[ 'uid' ] ) ) {
     // if a comment is submited and profile id is valid add comment
-        if(!empty($_POST[ 'comment' ] && getUserData($_GET[ 'profileid' ] ) ) ) {
-            $success = addProfileComment($_POST[ 'comment' ], $_SESSION[ 'userid' ], $_GET[ 'profileid' ] );
+   //get uid represent the profile the commint is  put on
+         if(!empty($_POST[ 'comment' ] && getUserData($_GET[ 'uid' ] ) ) ) {
+            $success = addProfileComment($_POST[ 'comment' ], $_SESSION[ 'userid' ], $_GET[ 'uid' ] );
             //redirects back to profile page
-            header("Location: profiler.php"."?uid=".$_GET[ 'profileid' ] );
+            header("Location: profiler.php"."?uid=".$_GET[ 'uid' ] );
             die();
         }
     }

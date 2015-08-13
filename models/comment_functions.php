@@ -4,9 +4,10 @@
     // returns true on succes false on failure
     function addBookComment($comment, $authorid, $bcid  ) {
         global $db ;
+        $comment = htmlspecialchars( $comment );
         $sql_query = "INSERT INTO bcopycomments SET authorid = ? , comment = ? , bcid = ? ";
         $stmt = mysqli_prepare( $db , $sql_query);
-        mysqli_stmt_bind_param($stmt, "isi", $authorid, $comment, $bcid ) ;
+        mysqli_stmt_bind_param($stmt, "isi", $authorid, $comment , $bcid ) ;
         mysqli_stmt_execute ( $stmt );
         if (mysqli_affected_rows( $db ) ) {
             return true ;
@@ -18,9 +19,10 @@
     // returns true on success or false on failure
     function addProfileComment($comment, $authorid, $profileid ) {
         global $db;
+        $comment = htmlspecialchars( $comment );
         $sql_query = "INSERT INTO profilecomments SET authorid = ? , comment = ? , profileid = ? ";
         $stmt = mysqli_prepare ( $db , $sql_query );
-        mysqli_stmt_bind_param ( $stmt, 'isi', $authorid, $comment, $profileid );
+        mysqli_stmt_bind_param ( $stmt, 'isi', $authorid,  $comment , $profileid );
         mysqli_stmt_execute( $stmt );
         if (mysqli_affected_rows( $db ) ) {
             return true ;
