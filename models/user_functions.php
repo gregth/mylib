@@ -111,4 +111,21 @@
         return $retData;
     }
 
+// function to update user e-mail
+    function updateEmail ( $newEmail, $uid ) {
+        global $db;
+        $sql_query = "UPDATE users SET email = ? WHERE uid = ? ";
+        $stmt = mysqli_prepare( $db , $sql_query);
+        mysqli_stmt_bind_param($stmt, "si", $newEmail, $uid ) ;
+        mysqli_stmt_execute ( $stmt );
+        if (mysqli_affected_rows( $db ) ) {
+            return true ;
+        }
+        return false ;
+
+
+
+    }
+
+
 ?>

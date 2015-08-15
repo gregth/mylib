@@ -1,10 +1,13 @@
 <div class="panel panel-default">
-    <h2 class="panel-heading">Ανεβάστε μια νέα εικόνα:</h2>
+    <h2 class="panel-heading">Επεξεργασία προφίλ:</h2>
         <ul class="list-group">
             <li class="list-group-item">
                 <form id="Form1" action="edit_profile.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="newimg" />
-                <input type="submit" value="Αλλαγή">
+                    <label for="newemail">E-mail</label>
+                    <input type="text" name="newemail" placeholder="e-mail"/>
+                    <label for="newimg">Νέα εικόνα</label>
+                    <input type="file" name="newimg" />
+                    <input type="submit" value="Αλλαγή"/>
                 </form>
             </li>
             <li class="list-group-item">

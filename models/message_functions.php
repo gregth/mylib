@@ -29,6 +29,7 @@
 //add a message to the message table keeps track of metadata , on succes returns true , on failure returns false
     function sendMessage( $message, $senterid, $receiverid  ) {
         global $db ;
+        $message = htmlspecialchars( $messages );
         $sql_query = "INSERT INTO messages SET senterid = ? , message = ? , receiverid = ? ,seen = 0";
         $stmt = mysqli_prepare( $db , $sql_query);
         mysqli_stmt_bind_param($stmt, "isi", $senterid, $message, $receiverid ) ;

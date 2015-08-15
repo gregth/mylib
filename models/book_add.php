@@ -103,17 +103,16 @@
         //Insert title, description, cover url and isbn it books table
         $title = $data[ 'title' ];
         $description = $data[ 'description' ];
-// not used ?       $isbn = $data[ 'isbn' ];
         $path = imageUpload( 'data/cover_images/', 'cover_img' );
         $stmt = mysqli_prepare( $db, 'INSERT INTO books SET title = ?, description = ?, coverimage = ?, uid = ?' );
-        mysqli_stmt_bind_param( $stmt, 'sssi',  $title, $description, $path, $_SESSION[ 'userid' ] );
+        mysqli_stmt_bind_param( $stmt, 'sssi',  htmlspecialchars( $title ), htmlspecialchars( $description ), $path, $_SESSION[ 'userid' ] );
         mysqli_execute( $stmt );
         $bid = mysqli_insert_id( $db );
 
         foreach ( $data[ 'authors' ] as $author ) {
             //Insert authors name in authors table
             $stmt = mysqli_prepare( $db, 'INSERT INTO bookauthors SET bid = ?, name = ?' );
-            mysqli_stmt_bind_param( $stmt, 'is', $bid, $author );
+            mysqli_stmt_bind_param( $stmt, 'is', $bid, htmlspecialchars( $author ) );
             mysqli_execute( $stmt );
         }
 
