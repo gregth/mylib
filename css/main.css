@@ -294,3 +294,7 @@ a.btn, button.dropdown-toggle {
 	margin: 50px;
 }
 
+#regForm span {
+    color: red;
+    display: block;
+}

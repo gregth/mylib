@@ -8,10 +8,10 @@
             <div class="panel-body">
                 <form method="POST" action="<?php echo createUrl( 'login.php', [], ['red', 'bid', 'authors', 'uid', 'bcid' ] ); ?>">
                     <label for="email">E-mail</label>
-                    <input id="email" type="text" name="email" placeholder="e-mail" />
+                    <input id="email" class="form-control" type="text" name="email" placeholder="e-mail" />
                     <label for="password">Κωδικός</label>
-                    <input type="password" name="password" placeholder="Κωδικός" />
-                    <input type="submit" value="Σύνδεση" />
+                    <input type="password" class="form-control" name="password" placeholder="Κωδικός" />
+                    <input type="submit" value="Σύνδεση" class="btn btn-default" />
                 </form>
                 <ul class="login-alternatives">
                     <li>Ξεχάσατε τον κωδικό σας</li>

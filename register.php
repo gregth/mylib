@@ -9,6 +9,7 @@
         header( 'Location: index.php'  );
     }
 
+    $title = 'Εγγραφή Χρήστη';
     //User has not logged in, dhow register form
     if ( !empty( $_POST ) ) {
 
