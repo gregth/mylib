@@ -32,6 +32,7 @@
             $book[ 'description' ] = $description;
             $book[ 'authors' ][ $author ] = true;
             $book[ 'genres' ][ $genre ] = true;
+            $book[ 'bid' ] = $id;
             $books[ $id ] = $book;
         }
         return $books;

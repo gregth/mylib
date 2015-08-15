@@ -1,5 +1,5 @@
 <h1>Αποτελέσματα Αναζήτησης</h1>
-<ul class = "searhResults">
+<ul class="searhResults">
 <?php
     if( $searchResults ) {
         foreach ( $searchResults as $book ) {

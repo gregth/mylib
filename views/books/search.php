@@ -5,7 +5,7 @@
     </div>
     <div class="panel-body">
         <form class="panel-body" action="books.php" method="GET">
-            <input id="books-instant-search" type="text" name="search" placeholder"Τίτλος Βιβλίου" />
+            <input class="form-control" id="books-instant-search" type="text" name="search" placeholder="Τίτλος Βιβλίου" />
             <input type="submit" value="Αναζήτηση" class="btn btn-default" />
         </form>
     </div>

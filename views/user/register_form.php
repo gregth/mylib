@@ -28,6 +28,7 @@
                         <span id="errors6"></span>
                     <input class="btn btn-default" type="submit" value="Εγγραφή" />
                 </form>
+            </div>
         </div>
     </div>
 </div>

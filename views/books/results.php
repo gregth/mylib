@@ -1,7 +1,7 @@
 <?php
-    if ( empty( $books ) ) { 
+    if ( empty( $books ) ) {
         echo 'Το βιβλίο που αναζητήσατε δεν βρέθηκε';
-    } 
+    }
     else {
         foreach ( $books as $id => $book ) {
             ?><div id="books" class="panel panel-default">
