@@ -1,11 +1,10 @@
 <?php
     global $db;
     $db = mysqli_connect(
-        'db16.papaki.gr',
-        'ourteam',
-        'Aotx6!',
-        'mylib',
-        '3306'
+        'localhost',
+        'user',
+        '123456',
+        'mylib'
     );
 
     if ( mysqli_connect_errno() ) {
