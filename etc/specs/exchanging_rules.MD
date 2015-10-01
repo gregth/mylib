@@ -3,10 +3,14 @@
 The book exchangin process consists of the following actions:
 * A user **adds a book copy**. 
 This means that the user owns a book copy that he no longer needs and makes it available to the community.
+
 * Other users search for book titles. For a specified book title, appears a list of the avaialble book copies. 
 Users can press "I want it!" button on any of the book copies, if they want to get the book copy
+
 *A notification is beeing sent to the user who has made the book avaialble. The user who wants and the user who gives the book come in contact through the messages platform.
+
 *Then user who gives the book can accept the request or reject it ( justifying the reason of rejection ).
+
 *Once the request is accepted, the book receiver has to confirm that the book was received, proving that the transaction was succesfull.
 
 #Rules for book exchanging
