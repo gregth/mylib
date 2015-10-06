@@ -1,9 +1,5 @@
 <?php
     require 'models/book/show.php';
-<<<<<<< HEAD
-=======
-    require 'models/connect.php';
->>>>>>> fileHousekeeping
     require 'models/book_copy/show.php';
     require 'models/date.php';
     require 'models/connect.php';
