@@ -1,8 +1,8 @@
 <?php
-    require 'models/show_book_functions.php';
-    require 'models/connect.php';
-    require 'models/show_bookcp_functions.php';
+    require 'models/book/show.php';
+    require 'models/book_copy/show.php';
     require 'models/date.php';
+    require 'models/connect.php';
     require 'models/redirect.php';
     $showHeading = true;
     if ( isset( $_GET[ 'bid' ] ) ) {
